@@ -44,9 +44,9 @@ jobs:
       - name: Publish to NPM
         run: |
           # Option 1: Using Bun to publish
-          bun publish
+          # bun publish
 
           # Option 2: Using NPM to publish (Recommended for compatibility)
-          # npm publish
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
