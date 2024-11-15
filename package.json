@@ -1,14 +1,14 @@
 {
-  "name": "@satstream/satstream-typescript-axios-sdk",
-  "version": "1.0.14",
-  "description": "OpenAPI client for @satstream/satstream-typescript-axios-sdk",
+  "name": "@satstream/sdk",
+  "version": "1.0.15",
+  "description": "OpenAPI client for @satstream/sdk",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
     "axios",
     "typescript",
     "openapi-client",
     "openapi-generator",
-    "@satstream/satstream-typescript-axios-sdk"
+    "@satstream/sdk"
   ],
   "license": "Unlicense",
   "main": "./dist/index.js",
@@ -23,8 +23,5 @@
   "devDependencies": {
     "@types/node": "^12.11.5",
     "typescript": "^3.6.4"
-  },
-  "publishConfig": {
-    "registry": "https://github.com/satstream/satstream-typescript-axios-sdk"
   }
 }
