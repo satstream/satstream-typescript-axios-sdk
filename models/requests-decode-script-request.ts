@@ -11,7 +11,20 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export * from './apis/bitcoin-api';
-export * from './apis/blocks-api';
-export * from './apis/inscriptions-api';
 
+ /**
+ * 
+ *
+ * @export
+ * @interface RequestsDecodeScriptRequest
+ */
+export interface RequestsDecodeScriptRequest {
+
+    /**
+     * The hex-encoded script to decode
+     *
+     * @type {string}
+     * @memberof RequestsDecodeScriptRequest
+     */
+    hexstring: string;
+}

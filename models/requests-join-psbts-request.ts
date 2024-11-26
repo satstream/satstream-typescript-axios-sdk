@@ -11,7 +11,20 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export * from './apis/bitcoin-api';
-export * from './apis/blocks-api';
-export * from './apis/inscriptions-api';
 
+ /**
+ * 
+ *
+ * @export
+ * @interface RequestsJoinPSBTsRequest
+ */
+export interface RequestsJoinPSBTsRequest {
+
+    /**
+     * Array of base64-encoded PSBTs to join
+     *
+     * @type {Array<string>}
+     * @memberof RequestsJoinPSBTsRequest
+     */
+    psbts?: Array<string>;
+}
