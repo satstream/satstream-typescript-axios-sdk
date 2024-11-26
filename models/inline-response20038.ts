@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { DecodeResponse } from './decode-response';
+import { TransactionResponse } from './transaction-response';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20038 extends UtilsResponseEnvelope {
 
     /**
-     * @type {DecodeResponse}
+     * @type {TransactionResponse}
      * @memberof InlineResponse20038
      */
-    data?: DecodeResponse;
+    data?: TransactionResponse;
 }

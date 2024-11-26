@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { MiningInfo } from './mining-info';
+import { TestMempoolAcceptResult } from './test-mempool-accept-result';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20024 extends UtilsResponseEnvelope {
 
     /**
-     * @type {MiningInfo}
+     * @type {Array<TestMempoolAcceptResult>}
      * @memberof InlineResponse20024
      */
-    data?: MiningInfo;
+    data?: Array<TestMempoolAcceptResult>;
 }

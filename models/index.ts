@@ -57,6 +57,7 @@ export * from './inline-response20038';
 export * from './inline-response20039';
 export * from './inline-response2004';
 export * from './inline-response20040';
+export * from './inline-response20041';
 export * from './inline-response2005';
 export * from './inline-response2006';
 export * from './inline-response2007';

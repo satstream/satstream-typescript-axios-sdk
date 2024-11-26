@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { TransactionResponse } from './transaction-response';
+import { TxSpendingPrevoutResult } from './tx-spending-prevout-result';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20037 extends UtilsResponseEnvelope {
 
     /**
-     * @type {TransactionResponse}
+     * @type {Array<TxSpendingPrevoutResult>}
      * @memberof InlineResponse20037
      */
-    data?: TransactionResponse;
+    data?: Array<TxSpendingPrevoutResult>;
 }

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { OutputResponse } from './output-response';
+import { MiningInfo } from './mining-info';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20025 extends UtilsResponseEnvelope {
 
     /**
-     * @type {OutputResponse}
+     * @type {MiningInfo}
      * @memberof InlineResponse20025
      */
-    data?: OutputResponse;
+    data?: MiningInfo;
 }

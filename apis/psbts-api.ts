@@ -17,8 +17,8 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20026 } from '../models';
 import { InlineResponse20027 } from '../models';
+import { InlineResponse20028 } from '../models';
 import { InlineResponse2005 } from '../models';
 import { RequestsAnalyzePSBTRequest } from '../models';
 import { RequestsCombinePSBTRequest } from '../models';
@@ -302,7 +302,7 @@ export const PSBTsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async analyzePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20026>>> {
+        async analyzePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20027>>> {
             const localVarAxiosArgs = await PSBTsApiAxiosParamCreator(configuration).analyzePsbt(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -344,7 +344,7 @@ export const PSBTsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async decodePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20027>>> {
+        async decodePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20028>>> {
             const localVarAxiosArgs = await PSBTsApiAxiosParamCreator(configuration).decodePsbt(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -381,7 +381,7 @@ export const PSBTsApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async analyzePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20026>> {
+        async analyzePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20027>> {
             return PSBTsApiFp(configuration).analyzePsbt(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -411,7 +411,7 @@ export const PSBTsApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async decodePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20027>> {
+        async decodePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20028>> {
             return PSBTsApiFp(configuration).decodePsbt(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -442,7 +442,7 @@ export class PSBTsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PSBTsApi
      */
-    public async analyzePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20026>> {
+    public async analyzePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20027>> {
         return PSBTsApiFp(this.configuration).analyzePsbt(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -475,7 +475,7 @@ export class PSBTsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PSBTsApi
      */
-    public async decodePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20027>> {
+    public async decodePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20028>> {
         return PSBTsApiFp(this.configuration).decodePsbt(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**

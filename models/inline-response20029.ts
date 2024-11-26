@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { RunesListResponse } from './runes-list-response';
+import { RuneResponse } from './rune-response';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20029 extends UtilsResponseEnvelope {
 
     /**
-     * @type {RunesListResponse}
+     * @type {RuneResponse}
      * @memberof InlineResponse20029
      */
-    data?: RunesListResponse;
+    data?: RuneResponse;
 }

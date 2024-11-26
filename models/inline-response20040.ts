@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { RawTx2 } from './raw-tx2';
+import { RawTx1 } from './raw-tx1';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20040 extends UtilsResponseEnvelope {
 
     /**
-     * @type {RawTx2}
+     * @type {RawTx1}
      * @memberof InlineResponse20040
      */
-    data?: RawTx2;
+    data?: RawTx1;
 }

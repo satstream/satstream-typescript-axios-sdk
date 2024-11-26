@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { StatusResponse } from './status-response';
+import { DecodedScript } from './decoded-script';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20032 extends UtilsResponseEnvelope {
 
     /**
-     * @type {StatusResponse}
+     * @type {DecodedScript}
      * @memberof InlineResponse20032
      */
-    data?: StatusResponse;
+    data?: DecodedScript;
 }

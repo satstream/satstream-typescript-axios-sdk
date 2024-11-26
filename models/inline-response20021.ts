@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { MempoolInfo } from './mempool-info';
+import { MempoolDescendantsData } from './mempool-descendants-data';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20021 extends UtilsResponseEnvelope {
 
     /**
-     * @type {MempoolInfo}
+     * @type {MempoolDescendantsData}
      * @memberof InlineResponse20021
      */
-    data?: MempoolInfo;
+    data?: MempoolDescendantsData;
 }

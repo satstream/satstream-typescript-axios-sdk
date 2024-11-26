@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { UTXOSetInfo } from './utxoset-info';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -22,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20035 extends UtilsResponseEnvelope {
 
     /**
-     * @type {Array<string>}
+     * @type {UTXOSetInfo}
      * @memberof InlineResponse20035
      */
-    data?: Array<string>;
+    data?: UTXOSetInfo;
 }

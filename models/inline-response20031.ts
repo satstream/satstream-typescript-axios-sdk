@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { DecodedScript } from './decoded-script';
+import { SatoshiResponse } from './satoshi-response';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20031 extends UtilsResponseEnvelope {
 
     /**
-     * @type {DecodedScript}
+     * @type {SatoshiResponse}
      * @memberof InlineResponse20031
      */
-    data?: DecodedScript;
+    data?: SatoshiResponse;
 }

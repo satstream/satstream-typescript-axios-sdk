@@ -18,7 +18,7 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { InlineResponse20013 } from '../models';
-import { InlineResponse20024 } from '../models';
+import { InlineResponse20025 } from '../models';
 import { RequestsGetNetworkHashPSRequest } from '../models';
 import { UtilsResponseEnvelope } from '../models';
 /**
@@ -135,7 +135,7 @@ export const MiningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMiningInfo(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20024>>> {
+        async getMiningInfo(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20025>>> {
             const localVarAxiosArgs = await MiningApiAxiosParamCreator(configuration).getMiningInfo(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -171,7 +171,7 @@ export const MiningApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMiningInfo(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20024>> {
+        async getMiningInfo(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20025>> {
             return MiningApiFp(configuration).getMiningInfo(options).then((request) => request(axios, basePath));
         },
         /**
@@ -201,7 +201,7 @@ export class MiningApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MiningApi
      */
-    public async getMiningInfo(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20024>> {
+    public async getMiningInfo(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20025>> {
         return MiningApiFp(this.configuration).getMiningInfo(options).then((request) => request(this.axios, this.basePath));
     }
     /**

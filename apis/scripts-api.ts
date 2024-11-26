@@ -17,7 +17,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20031 } from '../models';
+import { InlineResponse20032 } from '../models';
 import { RequestsDecodeScriptRequest } from '../models';
 import { UtilsResponseEnvelope } from '../models';
 /**
@@ -93,7 +93,7 @@ export const ScriptsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async decodeScript(body: RequestsDecodeScriptRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20031>>> {
+        async decodeScript(body: RequestsDecodeScriptRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20032>>> {
             const localVarAxiosArgs = await ScriptsApiAxiosParamCreator(configuration).decodeScript(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -116,7 +116,7 @@ export const ScriptsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async decodeScript(body: RequestsDecodeScriptRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20031>> {
+        async decodeScript(body: RequestsDecodeScriptRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20032>> {
             return ScriptsApiFp(configuration).decodeScript(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -137,7 +137,7 @@ export class ScriptsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ScriptsApi
      */
-    public async decodeScript(body: RequestsDecodeScriptRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20031>> {
+    public async decodeScript(body: RequestsDecodeScriptRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20032>> {
         return ScriptsApiFp(this.configuration).decodeScript(body, options).then((request) => request(this.axios, this.basePath));
     }
 }

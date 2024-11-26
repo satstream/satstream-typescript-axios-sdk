@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { DecodedPSBT } from './decoded-psbt';
+import { RawTx2 } from './raw-tx2';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
  *
  * @export
- * @interface InlineResponse20028
+ * @interface InlineResponse20041
  */
-export interface InlineResponse20028 extends UtilsResponseEnvelope {
+export interface InlineResponse20041 extends UtilsResponseEnvelope {
 
     /**
-     * @type {DecodedPSBT}
-     * @memberof InlineResponse20028
+     * @type {RawTx2}
+     * @memberof InlineResponse20041
      */
-    data?: DecodedPSBT;
+    data?: RawTx2;
 }

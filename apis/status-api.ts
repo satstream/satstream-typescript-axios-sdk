@@ -17,7 +17,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20032 } from '../models';
+import { InlineResponse20033 } from '../models';
 import { UtilsResponseEnvelope } from '../models';
 /**
  * StatusApi - axios parameter creator
@@ -82,7 +82,7 @@ export const StatusApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStatus(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20032>>> {
+        async getStatus(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20033>>> {
             const localVarAxiosArgs = await StatusApiAxiosParamCreator(configuration).getStatus(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -104,7 +104,7 @@ export const StatusApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStatus(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20032>> {
+        async getStatus(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20033>> {
             return StatusApiFp(configuration).getStatus(options).then((request) => request(axios, basePath));
         },
     };
@@ -124,7 +124,7 @@ export class StatusApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof StatusApi
      */
-    public async getStatus(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20032>> {
+    public async getStatus(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20033>> {
         return StatusApiFp(this.configuration).getStatus(options).then((request) => request(this.axios, this.basePath));
     }
 }

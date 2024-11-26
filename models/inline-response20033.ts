@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { TxOut } from './tx-out';
+import { StatusResponse } from './status-response';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20033 extends UtilsResponseEnvelope {
 
     /**
-     * @type {TxOut}
+     * @type {StatusResponse}
      * @memberof InlineResponse20033
      */
-    data?: TxOut;
+    data?: StatusResponse;
 }

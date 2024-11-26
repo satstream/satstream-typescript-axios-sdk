@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { SatoshiResponse } from './satoshi-response';
+import { RunesListResponse } from './runes-list-response';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20030 extends UtilsResponseEnvelope {
 
     /**
-     * @type {SatoshiResponse}
+     * @type {RunesListResponse}
      * @memberof InlineResponse20030
      */
-    data?: SatoshiResponse;
+    data?: RunesListResponse;
 }

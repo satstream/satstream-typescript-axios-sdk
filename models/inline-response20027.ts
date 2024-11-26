@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { DecodedPSBT } from './decoded-psbt';
+import { PSBTAnalysis } from './psbtanalysis';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20027 extends UtilsResponseEnvelope {
 
     /**
-     * @type {DecodedPSBT}
+     * @type {PSBTAnalysis}
      * @memberof InlineResponse20027
      */
-    data?: DecodedPSBT;
+    data?: PSBTAnalysis;
 }

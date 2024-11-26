@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { UTXOSetInfo } from './utxoset-info';
+import { TxOut } from './tx-out';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20034 extends UtilsResponseEnvelope {
 
     /**
-     * @type {UTXOSetInfo}
+     * @type {TxOut}
      * @memberof InlineResponse20034
      */
-    data?: UTXOSetInfo;
+    data?: TxOut;
 }

@@ -19,8 +19,8 @@ import { Configuration } from '../configuration';
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { InlineResponse20017 } from '../models';
 import { InlineResponse20018 } from '../models';
+import { InlineResponse20019 } from '../models';
 import { UtilsResponseEnvelope } from '../models';
-import { UtilsResponseEnvelope &amp; any } from '../models';
 /**
  * InscriptionsApi - axios parameter creator
  * @export
@@ -349,7 +349,7 @@ export const InscriptionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async fetchInscriptions(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<UtilsResponseEnvelope & any>>>> {
+        async fetchInscriptions(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20019>>> {
             const localVarAxiosArgs = await InscriptionsApiAxiosParamCreator(configuration).fetchInscriptions(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -438,7 +438,7 @@ export const InscriptionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async fetchInscriptions(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<UtilsResponseEnvelope & any>>> {
+        async fetchInscriptions(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20019>> {
             return InscriptionsApiFp(configuration).fetchInscriptions(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -510,7 +510,7 @@ export class InscriptionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InscriptionsApi
      */
-    public async fetchInscriptions(body: Array<string>, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<UtilsResponseEnvelope & any>>> {
+    public async fetchInscriptions(body: Array<string>, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20019>> {
         return InscriptionsApiFp(this.configuration).fetchInscriptions(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**

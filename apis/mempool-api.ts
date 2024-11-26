@@ -17,11 +17,11 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20019 } from '../models';
 import { InlineResponse20020 } from '../models';
 import { InlineResponse20021 } from '../models';
 import { InlineResponse20022 } from '../models';
 import { InlineResponse20023 } from '../models';
+import { InlineResponse20024 } from '../models';
 import { RequestsGetMempoolAncestorsRequest } from '../models';
 import { RequestsGetMempoolDescendantsRequest } from '../models';
 import { RequestsGetRawMempoolRequest } from '../models';
@@ -295,7 +295,7 @@ export const MempoolApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMempoolAncestors(body: RequestsGetMempoolAncestorsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20019>>> {
+        async getMempoolAncestors(body: RequestsGetMempoolAncestorsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20020>>> {
             const localVarAxiosArgs = await MempoolApiAxiosParamCreator(configuration).getMempoolAncestors(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -309,7 +309,7 @@ export const MempoolApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMempoolDescendants(body: RequestsGetMempoolDescendantsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20020>>> {
+        async getMempoolDescendants(body: RequestsGetMempoolDescendantsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20021>>> {
             const localVarAxiosArgs = await MempoolApiAxiosParamCreator(configuration).getMempoolDescendants(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -322,7 +322,7 @@ export const MempoolApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMempoolInfo(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20021>>> {
+        async getMempoolInfo(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20022>>> {
             const localVarAxiosArgs = await MempoolApiAxiosParamCreator(configuration).getMempoolInfo(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -336,7 +336,7 @@ export const MempoolApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRawMempool(body: RequestsGetRawMempoolRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20022>>> {
+        async getRawMempool(body: RequestsGetRawMempoolRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20023>>> {
             const localVarAxiosArgs = await MempoolApiAxiosParamCreator(configuration).getRawMempool(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -350,7 +350,7 @@ export const MempoolApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async testMempoolAccept(body: RequestsTestMempoolAcceptRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20023>>> {
+        async testMempoolAccept(body: RequestsTestMempoolAcceptRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20024>>> {
             const localVarAxiosArgs = await MempoolApiAxiosParamCreator(configuration).testMempoolAccept(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -373,7 +373,7 @@ export const MempoolApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMempoolAncestors(body: RequestsGetMempoolAncestorsRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20019>> {
+        async getMempoolAncestors(body: RequestsGetMempoolAncestorsRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20020>> {
             return MempoolApiFp(configuration).getMempoolAncestors(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -383,7 +383,7 @@ export const MempoolApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMempoolDescendants(body: RequestsGetMempoolDescendantsRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20020>> {
+        async getMempoolDescendants(body: RequestsGetMempoolDescendantsRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20021>> {
             return MempoolApiFp(configuration).getMempoolDescendants(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -392,7 +392,7 @@ export const MempoolApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMempoolInfo(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20021>> {
+        async getMempoolInfo(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20022>> {
             return MempoolApiFp(configuration).getMempoolInfo(options).then((request) => request(axios, basePath));
         },
         /**
@@ -402,7 +402,7 @@ export const MempoolApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRawMempool(body: RequestsGetRawMempoolRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20022>> {
+        async getRawMempool(body: RequestsGetRawMempoolRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20023>> {
             return MempoolApiFp(configuration).getRawMempool(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -412,7 +412,7 @@ export const MempoolApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async testMempoolAccept(body: RequestsTestMempoolAcceptRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20023>> {
+        async testMempoolAccept(body: RequestsTestMempoolAcceptRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20024>> {
             return MempoolApiFp(configuration).testMempoolAccept(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -433,7 +433,7 @@ export class MempoolApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MempoolApi
      */
-    public async getMempoolAncestors(body: RequestsGetMempoolAncestorsRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20019>> {
+    public async getMempoolAncestors(body: RequestsGetMempoolAncestorsRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20020>> {
         return MempoolApiFp(this.configuration).getMempoolAncestors(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -444,7 +444,7 @@ export class MempoolApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MempoolApi
      */
-    public async getMempoolDescendants(body: RequestsGetMempoolDescendantsRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20020>> {
+    public async getMempoolDescendants(body: RequestsGetMempoolDescendantsRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20021>> {
         return MempoolApiFp(this.configuration).getMempoolDescendants(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -454,7 +454,7 @@ export class MempoolApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MempoolApi
      */
-    public async getMempoolInfo(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20021>> {
+    public async getMempoolInfo(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20022>> {
         return MempoolApiFp(this.configuration).getMempoolInfo(options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -465,7 +465,7 @@ export class MempoolApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MempoolApi
      */
-    public async getRawMempool(body: RequestsGetRawMempoolRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20022>> {
+    public async getRawMempool(body: RequestsGetRawMempoolRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20023>> {
         return MempoolApiFp(this.configuration).getRawMempool(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -476,7 +476,7 @@ export class MempoolApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MempoolApi
      */
-    public async testMempoolAccept(body: RequestsTestMempoolAcceptRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20023>> {
+    public async testMempoolAccept(body: RequestsTestMempoolAcceptRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20024>> {
         return MempoolApiFp(this.configuration).testMempoolAccept(body, options).then((request) => request(this.axios, this.basePath));
     }
 }

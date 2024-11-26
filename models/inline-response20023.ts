@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { TestMempoolAcceptResult } from './test-mempool-accept-result';
+import { RawMempoolData } from './raw-mempool-data';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse20023 extends UtilsResponseEnvelope {
 
     /**
-     * @type {Array<TestMempoolAcceptResult>}
+     * @type {RawMempoolData}
      * @memberof InlineResponse20023
      */
-    data?: Array<TestMempoolAcceptResult>;
+    data?: RawMempoolData;
 }

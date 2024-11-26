@@ -17,7 +17,6 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20033 } from '../models';
 import { InlineResponse20034 } from '../models';
 import { InlineResponse20035 } from '../models';
 import { InlineResponse20036 } from '../models';
@@ -25,6 +24,7 @@ import { InlineResponse20037 } from '../models';
 import { InlineResponse20038 } from '../models';
 import { InlineResponse20039 } from '../models';
 import { InlineResponse20040 } from '../models';
+import { InlineResponse20041 } from '../models';
 import { InlineResponse2005 } from '../models';
 import { RequestsCombineRawTransactionRequest } from '../models';
 import { RequestsConvertToPSBTRequest } from '../models';
@@ -799,7 +799,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async decodeTx(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20038>>> {
+        async decodeTx(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20039>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).decodeTx(txid, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -813,7 +813,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRawTransactionDecoded(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20039>>> {
+        async getRawTransactionDecoded(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20040>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getRawTransactionDecoded(txid, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -841,7 +841,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRawTransactionPrevout(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20040>>> {
+        async getRawTransactionPrevout(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20041>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getRawTransactionPrevout(txid, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -855,7 +855,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTransaction(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20037>>> {
+        async getTransaction(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20038>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getTransaction(txid, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -869,7 +869,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxOut(body: RequestsGetTxOutRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20033>>> {
+        async getTxOut(body: RequestsGetTxOutRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20034>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getTxOut(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -897,7 +897,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxOutSetInfo(body: RequestsGetTxOutSetInfoRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20034>>> {
+        async getTxOutSetInfo(body: RequestsGetTxOutSetInfoRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20035>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getTxOutSetInfo(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -911,7 +911,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxSpendingPrevout(body: RequestsGetTxSpendingPrevoutRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20036>>> {
+        async getTxSpendingPrevout(body: RequestsGetTxSpendingPrevoutRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20037>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getTxSpendingPrevout(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -939,7 +939,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async verifyTxOutProof(body: RequestsVerifyTxOutProofRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20035>>> {
+        async verifyTxOutProof(body: RequestsVerifyTxOutProofRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20036>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).verifyTxOutProof(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -992,7 +992,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async decodeTx(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20038>> {
+        async decodeTx(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20039>> {
             return TransactionsApiFp(configuration).decodeTx(txid, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1002,7 +1002,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRawTransactionDecoded(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20039>> {
+        async getRawTransactionDecoded(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20040>> {
             return TransactionsApiFp(configuration).getRawTransactionDecoded(txid, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1022,7 +1022,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRawTransactionPrevout(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20040>> {
+        async getRawTransactionPrevout(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20041>> {
             return TransactionsApiFp(configuration).getRawTransactionPrevout(txid, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1032,7 +1032,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTransaction(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20037>> {
+        async getTransaction(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20038>> {
             return TransactionsApiFp(configuration).getTransaction(txid, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1042,7 +1042,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxOut(body: RequestsGetTxOutRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20033>> {
+        async getTxOut(body: RequestsGetTxOutRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20034>> {
             return TransactionsApiFp(configuration).getTxOut(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1062,7 +1062,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxOutSetInfo(body: RequestsGetTxOutSetInfoRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20034>> {
+        async getTxOutSetInfo(body: RequestsGetTxOutSetInfoRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20035>> {
             return TransactionsApiFp(configuration).getTxOutSetInfo(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1072,7 +1072,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxSpendingPrevout(body: RequestsGetTxSpendingPrevoutRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20036>> {
+        async getTxSpendingPrevout(body: RequestsGetTxSpendingPrevoutRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20037>> {
             return TransactionsApiFp(configuration).getTxSpendingPrevout(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1092,7 +1092,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async verifyTxOutProof(body: RequestsVerifyTxOutProofRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20035>> {
+        async verifyTxOutProof(body: RequestsVerifyTxOutProofRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20036>> {
             return TransactionsApiFp(configuration).verifyTxOutProof(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -1146,7 +1146,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async decodeTx(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20038>> {
+    public async decodeTx(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20039>> {
         return TransactionsApiFp(this.configuration).decodeTx(txid, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1157,7 +1157,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getRawTransactionDecoded(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20039>> {
+    public async getRawTransactionDecoded(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20040>> {
         return TransactionsApiFp(this.configuration).getRawTransactionDecoded(txid, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1179,7 +1179,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getRawTransactionPrevout(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20040>> {
+    public async getRawTransactionPrevout(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20041>> {
         return TransactionsApiFp(this.configuration).getRawTransactionPrevout(txid, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1190,7 +1190,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getTransaction(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20037>> {
+    public async getTransaction(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20038>> {
         return TransactionsApiFp(this.configuration).getTransaction(txid, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1201,7 +1201,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getTxOut(body: RequestsGetTxOutRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20033>> {
+    public async getTxOut(body: RequestsGetTxOutRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20034>> {
         return TransactionsApiFp(this.configuration).getTxOut(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1223,7 +1223,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getTxOutSetInfo(body: RequestsGetTxOutSetInfoRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20034>> {
+    public async getTxOutSetInfo(body: RequestsGetTxOutSetInfoRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20035>> {
         return TransactionsApiFp(this.configuration).getTxOutSetInfo(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1234,7 +1234,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getTxSpendingPrevout(body: RequestsGetTxSpendingPrevoutRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20036>> {
+    public async getTxSpendingPrevout(body: RequestsGetTxSpendingPrevoutRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20037>> {
         return TransactionsApiFp(this.configuration).getTxSpendingPrevout(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1256,7 +1256,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async verifyTxOutProof(body: RequestsVerifyTxOutProofRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20035>> {
+    public async verifyTxOutProof(body: RequestsVerifyTxOutProofRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20036>> {
         return TransactionsApiFp(this.configuration).verifyTxOutProof(body, options).then((request) => request(this.axios, this.basePath));
     }
 }
