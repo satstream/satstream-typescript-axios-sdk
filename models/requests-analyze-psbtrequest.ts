@@ -21,6 +21,8 @@
 export interface RequestsAnalyzePSBTRequest {
 
     /**
+     * The base64-encoded PSBT to analyze
+     *
      * @type {string}
      * @memberof RequestsAnalyzePSBTRequest
      */

@@ -21,6 +21,8 @@
 export interface RequestsCombinePSBTRequest {
 
     /**
+     * Array of base64-encoded PSBTs to combine
+     *
      * @type {Array<string>}
      * @memberof RequestsCombinePSBTRequest
      */

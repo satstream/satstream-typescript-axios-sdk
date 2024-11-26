@@ -17,8 +17,17 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { GithubComSatstreamSsApiServerApiBlockResponsesBlockResponse } from '../models';
-import { GithubComSatstreamSsApiServerApiBlockResponsesError } from '../models';
+import { InlineResponse20010 } from '../models';
+import { InlineResponse20011 } from '../models';
+import { InlineResponse20012 } from '../models';
+import { InlineResponse2004 } from '../models';
+import { InlineResponse2005 } from '../models';
+import { InlineResponse2006 } from '../models';
+import { InlineResponse2007 } from '../models';
+import { InlineResponse2008 } from '../models';
+import { InlineResponse2009 } from '../models';
+import { RequestsGetBlockStatsRequest } from '../models';
+import { UtilsResponseEnvelope } from '../models';
 /**
  * BlocksApi - axios parameter creator
  * @export
@@ -26,19 +35,562 @@ import { GithubComSatstreamSsApiServerApiBlockResponsesError } from '../models';
 export const BlocksApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Get detailed information about a specific block by hash
-         * @summary Get block info by hash
-         * @param {string} blockHash Block Hash
+         * Returns the height of the latest block
+         * @summary Get the height of the latest block
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBlockByHash: async (blockHash: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'blockHash' is not null or undefined
-            if (blockHash === null || blockHash === undefined) {
-                throw new RequiredError('blockHash','Required parameter blockHash was null or undefined when calling getBlockByHash.');
+        getBlockCount: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/blockcount`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
             }
-            const localVarPath = `/block/hash/{block_hash}`
-                .replace(`{${"block_hash"}}`, encodeURIComponent(String(blockHash)));
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get block by hash or height as a decoded object
+         * @summary Get block by hash or height (verbosity 2)
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBlockDecoded: async (identifier: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'identifier' is not null or undefined
+            if (identifier === null || identifier === undefined) {
+                throw new RequiredError('identifier','Required parameter identifier was null or undefined when calling getBlockDecoded.');
+            }
+            const localVarPath = `/block/raw/{identifier}/decoded`
+                .replace(`{${"identifier"}}`, encodeURIComponent(String(identifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns blockhash of specified block.
+         * @summary Returns blockhash of specified block.
+         * @param {string} blockHeight Block Height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBlockHashByHeight: async (blockHeight: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'blockHeight' is not null or undefined
+            if (blockHeight === null || blockHeight === undefined) {
+                throw new RequiredError('blockHeight','Required parameter blockHeight was null or undefined when calling getBlockHashByHeight.');
+            }
+            const localVarPath = `/blockhash/{block_height}`
+                .replace(`{${"block_height"}}`, encodeURIComponent(String(blockHeight)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get block by hash or height as a raw hex string
+         * @summary Get block by hash or height (verbosity 0)
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBlockHex: async (identifier: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'identifier' is not null or undefined
+            if (identifier === null || identifier === undefined) {
+                throw new RequiredError('identifier','Required parameter identifier was null or undefined when calling getBlockHex.');
+            }
+            const localVarPath = `/block/raw/{identifier}/hex`
+                .replace(`{${"identifier"}}`, encodeURIComponent(String(identifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get detailed information about a specific block by hash or height
+         * @summary Get block info by hash or height
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBlockInfo: async (identifier: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'identifier' is not null or undefined
+            if (identifier === null || identifier === undefined) {
+                throw new RequiredError('identifier','Required parameter identifier was null or undefined when calling getBlockInfo.');
+            }
+            const localVarPath = `/block/{identifier}`
+                .replace(`{${"identifier"}}`, encodeURIComponent(String(identifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get block by hash or height with prevout information
+         * @summary Get block by hash or height (verbosity 3)
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBlockPrevout: async (identifier: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'identifier' is not null or undefined
+            if (identifier === null || identifier === undefined) {
+                throw new RequiredError('identifier','Required parameter identifier was null or undefined when calling getBlockPrevout.');
+            }
+            const localVarPath = `/block/raw/{identifier}/prevout`
+                .replace(`{${"identifier"}}`, encodeURIComponent(String(identifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Computes per block statistics for a given window
+         * @summary Get block stats
+         * @param {RequestsGetBlockStatsRequest} body Block stats request parameters
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBlockStats: async (body: RequestsGetBlockStatsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling getBlockStats.');
+            }
+            const localVarPath = `/block/stats`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get block by hash or height as a summary object
+         * @summary Get block by hash or height (verbosity 1)
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBlockSummary: async (identifier: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'identifier' is not null or undefined
+            if (identifier === null || identifier === undefined) {
+                throw new RequiredError('identifier','Required parameter identifier was null or undefined when calling getBlockSummary.');
+            }
+            const localVarPath = `/block/raw/{identifier}/summary`
+                .replace(`{${"identifier"}}`, encodeURIComponent(String(identifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns an object containing various state info regarding blockchain processing
+         * @summary Get blockchain information
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBlockchainInfo: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/blockchain/info`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns the latest block height, last 100 block hashes, and featured inscriptions
+         * @summary Returns the latest block height, last 100 block hashes, and featured inscriptions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBlocks: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/blocks`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns the height of the latest block.
+         * @summary Returns the height of the latest block.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLatestBlockHeight: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/blockheight`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns blockhash for the latest block.
+         * @summary Returns blockhash for the latest block.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLatestBlockhash: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/blockhash`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns the UNIX timestamp of when the latest block was mined
+         * @summary Get the timestamp of the latest block
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLatestBlocktime: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/blocktime`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -83,14 +635,176 @@ export const BlocksApiAxiosParamCreator = function (configuration?: Configuratio
 export const BlocksApiFp = function(configuration?: Configuration) {
     return {
         /**
-         * Get detailed information about a specific block by hash
-         * @summary Get block info by hash
-         * @param {string} blockHash Block Hash
+         * Returns the height of the latest block
+         * @summary Get the height of the latest block
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockByHash(blockHash: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GithubComSatstreamSsApiServerApiBlockResponsesBlockResponse>>> {
-            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockByHash(blockHash, options);
+        async getBlockCount(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20011>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockCount(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Get block by hash or height as a decoded object
+         * @summary Get block by hash or height (verbosity 2)
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockDecoded(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2004>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockDecoded(identifier, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Returns blockhash of specified block.
+         * @summary Returns blockhash of specified block.
+         * @param {string} blockHeight Block Height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockHashByHeight(blockHeight: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockHashByHeight(blockHeight, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Get block by hash or height as a raw hex string
+         * @summary Get block by hash or height (verbosity 0)
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockHex(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockHex(identifier, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Get detailed information about a specific block by hash or height
+         * @summary Get block info by hash or height
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockInfo(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2009>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockInfo(identifier, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Get block by hash or height with prevout information
+         * @summary Get block by hash or height (verbosity 3)
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockPrevout(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2006>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockPrevout(identifier, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Computes per block statistics for a given window
+         * @summary Get block stats
+         * @param {RequestsGetBlockStatsRequest} body Block stats request parameters
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockStats(body: RequestsGetBlockStatsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2008>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockStats(body, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Get block by hash or height as a summary object
+         * @summary Get block by hash or height (verbosity 1)
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockSummary(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2007>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockSummary(identifier, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Returns an object containing various state info regarding blockchain processing
+         * @summary Get blockchain information
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockchainInfo(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20010>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockchainInfo(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Returns the latest block height, last 100 block hashes, and featured inscriptions
+         * @summary Returns the latest block height, last 100 block hashes, and featured inscriptions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlocks(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20012>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlocks(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Returns the height of the latest block.
+         * @summary Returns the height of the latest block.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLatestBlockHeight(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20011>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getLatestBlockHeight(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Returns blockhash for the latest block.
+         * @summary Returns blockhash for the latest block.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLatestBlockhash(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getLatestBlockhash(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Returns the UNIX timestamp of when the latest block was mined
+         * @summary Get the timestamp of the latest block
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLatestBlocktime(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20011>>> {
+            const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getLatestBlocktime(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -106,14 +820,128 @@ export const BlocksApiFp = function(configuration?: Configuration) {
 export const BlocksApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
         /**
-         * Get detailed information about a specific block by hash
-         * @summary Get block info by hash
-         * @param {string} blockHash Block Hash
+         * Returns the height of the latest block
+         * @summary Get the height of the latest block
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockByHash(blockHash: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GithubComSatstreamSsApiServerApiBlockResponsesBlockResponse>> {
-            return BlocksApiFp(configuration).getBlockByHash(blockHash, options).then((request) => request(axios, basePath));
+        async getBlockCount(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20011>> {
+            return BlocksApiFp(configuration).getBlockCount(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get block by hash or height as a decoded object
+         * @summary Get block by hash or height (verbosity 2)
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockDecoded(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2004>> {
+            return BlocksApiFp(configuration).getBlockDecoded(identifier, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns blockhash of specified block.
+         * @summary Returns blockhash of specified block.
+         * @param {string} blockHeight Block Height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockHashByHeight(blockHeight: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+            return BlocksApiFp(configuration).getBlockHashByHeight(blockHeight, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get block by hash or height as a raw hex string
+         * @summary Get block by hash or height (verbosity 0)
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockHex(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+            return BlocksApiFp(configuration).getBlockHex(identifier, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get detailed information about a specific block by hash or height
+         * @summary Get block info by hash or height
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockInfo(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2009>> {
+            return BlocksApiFp(configuration).getBlockInfo(identifier, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get block by hash or height with prevout information
+         * @summary Get block by hash or height (verbosity 3)
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockPrevout(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2006>> {
+            return BlocksApiFp(configuration).getBlockPrevout(identifier, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Computes per block statistics for a given window
+         * @summary Get block stats
+         * @param {RequestsGetBlockStatsRequest} body Block stats request parameters
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockStats(body: RequestsGetBlockStatsRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2008>> {
+            return BlocksApiFp(configuration).getBlockStats(body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get block by hash or height as a summary object
+         * @summary Get block by hash or height (verbosity 1)
+         * @param {string} identifier Block hash or height
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockSummary(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2007>> {
+            return BlocksApiFp(configuration).getBlockSummary(identifier, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns an object containing various state info regarding blockchain processing
+         * @summary Get blockchain information
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlockchainInfo(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20010>> {
+            return BlocksApiFp(configuration).getBlockchainInfo(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns the latest block height, last 100 block hashes, and featured inscriptions
+         * @summary Returns the latest block height, last 100 block hashes, and featured inscriptions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBlocks(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20012>> {
+            return BlocksApiFp(configuration).getBlocks(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns the height of the latest block.
+         * @summary Returns the height of the latest block.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLatestBlockHeight(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20011>> {
+            return BlocksApiFp(configuration).getLatestBlockHeight(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns blockhash for the latest block.
+         * @summary Returns blockhash for the latest block.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLatestBlockhash(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+            return BlocksApiFp(configuration).getLatestBlockhash(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns the UNIX timestamp of when the latest block was mined
+         * @summary Get the timestamp of the latest block
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLatestBlocktime(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20011>> {
+            return BlocksApiFp(configuration).getLatestBlocktime(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -126,14 +954,140 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
  */
 export class BlocksApi extends BaseAPI {
     /**
-     * Get detailed information about a specific block by hash
-     * @summary Get block info by hash
-     * @param {string} blockHash Block Hash
+     * Returns the height of the latest block
+     * @summary Get the height of the latest block
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getBlockByHash(blockHash: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GithubComSatstreamSsApiServerApiBlockResponsesBlockResponse>> {
-        return BlocksApiFp(this.configuration).getBlockByHash(blockHash, options).then((request) => request(this.axios, this.basePath));
+    public async getBlockCount(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20011>> {
+        return BlocksApiFp(this.configuration).getBlockCount(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Get block by hash or height as a decoded object
+     * @summary Get block by hash or height (verbosity 2)
+     * @param {string} identifier Block hash or height
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlocksApi
+     */
+    public async getBlockDecoded(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2004>> {
+        return BlocksApiFp(this.configuration).getBlockDecoded(identifier, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns blockhash of specified block.
+     * @summary Returns blockhash of specified block.
+     * @param {string} blockHeight Block Height
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlocksApi
+     */
+    public async getBlockHashByHeight(blockHeight: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+        return BlocksApiFp(this.configuration).getBlockHashByHeight(blockHeight, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Get block by hash or height as a raw hex string
+     * @summary Get block by hash or height (verbosity 0)
+     * @param {string} identifier Block hash or height
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlocksApi
+     */
+    public async getBlockHex(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+        return BlocksApiFp(this.configuration).getBlockHex(identifier, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Get detailed information about a specific block by hash or height
+     * @summary Get block info by hash or height
+     * @param {string} identifier Block hash or height
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlocksApi
+     */
+    public async getBlockInfo(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2009>> {
+        return BlocksApiFp(this.configuration).getBlockInfo(identifier, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Get block by hash or height with prevout information
+     * @summary Get block by hash or height (verbosity 3)
+     * @param {string} identifier Block hash or height
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlocksApi
+     */
+    public async getBlockPrevout(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2006>> {
+        return BlocksApiFp(this.configuration).getBlockPrevout(identifier, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Computes per block statistics for a given window
+     * @summary Get block stats
+     * @param {RequestsGetBlockStatsRequest} body Block stats request parameters
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlocksApi
+     */
+    public async getBlockStats(body: RequestsGetBlockStatsRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2008>> {
+        return BlocksApiFp(this.configuration).getBlockStats(body, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Get block by hash or height as a summary object
+     * @summary Get block by hash or height (verbosity 1)
+     * @param {string} identifier Block hash or height
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlocksApi
+     */
+    public async getBlockSummary(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2007>> {
+        return BlocksApiFp(this.configuration).getBlockSummary(identifier, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns an object containing various state info regarding blockchain processing
+     * @summary Get blockchain information
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlocksApi
+     */
+    public async getBlockchainInfo(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20010>> {
+        return BlocksApiFp(this.configuration).getBlockchainInfo(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns the latest block height, last 100 block hashes, and featured inscriptions
+     * @summary Returns the latest block height, last 100 block hashes, and featured inscriptions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlocksApi
+     */
+    public async getBlocks(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20012>> {
+        return BlocksApiFp(this.configuration).getBlocks(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns the height of the latest block.
+     * @summary Returns the height of the latest block.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlocksApi
+     */
+    public async getLatestBlockHeight(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20011>> {
+        return BlocksApiFp(this.configuration).getLatestBlockHeight(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns blockhash for the latest block.
+     * @summary Returns blockhash for the latest block.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlocksApi
+     */
+    public async getLatestBlockhash(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+        return BlocksApiFp(this.configuration).getLatestBlockhash(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns the UNIX timestamp of when the latest block was mined
+     * @summary Get the timestamp of the latest block
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BlocksApi
+     */
+    public async getLatestBlocktime(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20011>> {
+        return BlocksApiFp(this.configuration).getLatestBlocktime(options).then((request) => request(this.axios, this.basePath));
     }
 }

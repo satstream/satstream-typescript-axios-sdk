@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { GithubComSatstreamSsUtilsBitcoinCliTxSpendingPrevoutInput } from './github-com-satstream-ss-utils-bitcoin-cli-tx-spending-prevout-input';
+import { TxSpendingPrevoutInput } from './tx-spending-prevout-input';
  /**
  * 
  *
@@ -24,8 +24,8 @@ export interface RequestsGetTxSpendingPrevoutRequest {
     /**
      * The transaction outputs to check
      *
-     * @type {Array<GithubComSatstreamSsUtilsBitcoinCliTxSpendingPrevoutInput>}
+     * @type {Array<TxSpendingPrevoutInput>}
      * @memberof RequestsGetTxSpendingPrevoutRequest
      */
-    outputs?: Array<GithubComSatstreamSsUtilsBitcoinCliTxSpendingPrevoutInput>;
+    outputs?: Array<TxSpendingPrevoutInput>;
 }

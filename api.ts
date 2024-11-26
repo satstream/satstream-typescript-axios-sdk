@@ -11,7 +11,18 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export * from './apis/bitcoin-api';
+export * from './apis/addresses-api';
 export * from './apis/blocks-api';
+export * from './apis/fees-api';
 export * from './apis/inscriptions-api';
+export * from './apis/mempool-api';
+export * from './apis/mining-api';
+export * from './apis/network-api';
+export * from './apis/outputs-api';
+export * from './apis/psbts-api';
+export * from './apis/runes-api';
+export * from './apis/satoshis-api';
+export * from './apis/scripts-api';
+export * from './apis/status-api';
+export * from './apis/transactions-api';
 

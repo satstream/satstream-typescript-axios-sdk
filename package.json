@@ -1,6 +1,6 @@
 {
   "name": "@satstream/sdk",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "OpenAPI client for @satstream/sdk",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
