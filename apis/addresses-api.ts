@@ -17,12 +17,12 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse200 } from '../models';
-import { InlineResponse2001 } from '../models';
-import { InlineResponse2002 } from '../models';
-import { InlineResponse2003 } from '../models';
-import { RequestsVerifyMessageRequest } from '../models';
+import { GetAddressDeltasResponse } from '../models';
+import { GetAddressResponse } from '../models';
+import { GetAddressRuneDeltasResponse } from '../models';
+import { GetAddressUTXOsResponse } from '../models';
 import { UtilsResponseEnvelope } from '../models';
+import { ValidateAddressResponse } from '../models';
 /**
  * AddressesApi - axios parameter creator
  * @export
@@ -59,6 +59,142 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
                     ? await configuration.apiKey("X-API-KEY")
                     : await configuration.apiKey;
                 localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get deltas for a specific address with pagination
+         * @summary Get address deltas
+         * @param {string} address Address
+         * @param {number} [pageSize] Number of results per page (default: 100, max: 1000)
+         * @param {number} [startHeight] Start block height
+         * @param {number} [endHeight] End block height
+         * @param {string} [cursor] Base64 encoded cursor for pagination
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAddressDeltas: async (address: string, pageSize?: number, startHeight?: number, endHeight?: number, cursor?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'address' is not null or undefined
+            if (address === null || address === undefined) {
+                throw new RequiredError('address','Required parameter address was null or undefined when calling getAddressDeltas.');
+            }
+            const localVarPath = `/address/{address}/deltas`
+                .replace(`{${"address"}}`, encodeURIComponent(String(address)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            if (pageSize !== undefined) {
+                localVarQueryParameter['page_size'] = pageSize;
+            }
+
+            if (startHeight !== undefined) {
+                localVarQueryParameter['start_height'] = startHeight;
+            }
+
+            if (endHeight !== undefined) {
+                localVarQueryParameter['end_height'] = endHeight;
+            }
+
+            if (cursor !== undefined) {
+                localVarQueryParameter['cursor'] = cursor;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get rune deltas for a specific address with pagination
+         * @summary Get address rune deltas
+         * @param {string} address Address
+         * @param {number} [pageSize] Number of results per page (default: 100, max: 1000)
+         * @param {number} [startHeight] Start block height
+         * @param {number} [endHeight] End block height
+         * @param {string} [cursor] Cursor for pagination
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAddressRuneDeltas: async (address: string, pageSize?: number, startHeight?: number, endHeight?: number, cursor?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'address' is not null or undefined
+            if (address === null || address === undefined) {
+                throw new RequiredError('address','Required parameter address was null or undefined when calling getAddressRuneDeltas.');
+            }
+            const localVarPath = `/address/{address}/deltas/runes`
+                .replace(`{${"address"}}`, encodeURIComponent(String(address)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            if (pageSize !== undefined) {
+                localVarQueryParameter['page_size'] = pageSize;
+            }
+
+            if (startHeight !== undefined) {
+                localVarQueryParameter['start_height'] = startHeight;
+            }
+
+            if (endHeight !== undefined) {
+                localVarQueryParameter['end_height'] = endHeight;
+            }
+
+            if (cursor !== undefined) {
+                localVarQueryParameter['cursor'] = cursor;
             }
 
             const query = new URLSearchParams(localVarUrlObj.search);
@@ -178,57 +314,6 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * Verifies a signed message
-         * @summary Verify message
-         * @param {RequestsVerifyMessageRequest} body Message verification parameters
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        verifyMessage: async (body: RequestsVerifyMessageRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling verifyMessage.');
-            }
-            const localVarPath = `/address/verify-message`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication ApiKeyAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? await configuration.apiKey("X-API-KEY")
-                    : await configuration.apiKey;
-                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -245,8 +330,44 @@ export const AddressesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAddress(address: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2001>>> {
+        async getAddress(address: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetAddressResponse>>> {
             const localVarAxiosArgs = await AddressesApiAxiosParamCreator(configuration).getAddress(address, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Get deltas for a specific address with pagination
+         * @summary Get address deltas
+         * @param {string} address Address
+         * @param {number} [pageSize] Number of results per page (default: 100, max: 1000)
+         * @param {number} [startHeight] Start block height
+         * @param {number} [endHeight] End block height
+         * @param {string} [cursor] Base64 encoded cursor for pagination
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAddressDeltas(address: string, pageSize?: number, startHeight?: number, endHeight?: number, cursor?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetAddressDeltasResponse>>> {
+            const localVarAxiosArgs = await AddressesApiAxiosParamCreator(configuration).getAddressDeltas(address, pageSize, startHeight, endHeight, cursor, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Get rune deltas for a specific address with pagination
+         * @summary Get address rune deltas
+         * @param {string} address Address
+         * @param {number} [pageSize] Number of results per page (default: 100, max: 1000)
+         * @param {number} [startHeight] Start block height
+         * @param {number} [endHeight] End block height
+         * @param {string} [cursor] Cursor for pagination
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAddressRuneDeltas(address: string, pageSize?: number, startHeight?: number, endHeight?: number, cursor?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetAddressRuneDeltasResponse>>> {
+            const localVarAxiosArgs = await AddressesApiAxiosParamCreator(configuration).getAddressRuneDeltas(address, pageSize, startHeight, endHeight, cursor, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -260,7 +381,7 @@ export const AddressesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAddressUtxos(address: string, type?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2002>>> {
+        async getAddressUtxos(address: string, type?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetAddressUTXOsResponse>>> {
             const localVarAxiosArgs = await AddressesApiAxiosParamCreator(configuration).getAddressUtxos(address, type, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -274,22 +395,8 @@ export const AddressesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validateAddress(address: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2003>>> {
+        async validateAddress(address: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ValidateAddressResponse>>> {
             const localVarAxiosArgs = await AddressesApiAxiosParamCreator(configuration).validateAddress(address, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * Verifies a signed message
-         * @summary Verify message
-         * @param {RequestsVerifyMessageRequest} body Message verification parameters
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async verifyMessage(body: RequestsVerifyMessageRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse200>>> {
-            const localVarAxiosArgs = await AddressesApiAxiosParamCreator(configuration).verifyMessage(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -311,8 +418,36 @@ export const AddressesApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAddress(address: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2001>> {
+        async getAddress(address: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetAddressResponse>> {
             return AddressesApiFp(configuration).getAddress(address, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get deltas for a specific address with pagination
+         * @summary Get address deltas
+         * @param {string} address Address
+         * @param {number} [pageSize] Number of results per page (default: 100, max: 1000)
+         * @param {number} [startHeight] Start block height
+         * @param {number} [endHeight] End block height
+         * @param {string} [cursor] Base64 encoded cursor for pagination
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAddressDeltas(address: string, pageSize?: number, startHeight?: number, endHeight?: number, cursor?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetAddressDeltasResponse>> {
+            return AddressesApiFp(configuration).getAddressDeltas(address, pageSize, startHeight, endHeight, cursor, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get rune deltas for a specific address with pagination
+         * @summary Get address rune deltas
+         * @param {string} address Address
+         * @param {number} [pageSize] Number of results per page (default: 100, max: 1000)
+         * @param {number} [startHeight] Start block height
+         * @param {number} [endHeight] End block height
+         * @param {string} [cursor] Cursor for pagination
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAddressRuneDeltas(address: string, pageSize?: number, startHeight?: number, endHeight?: number, cursor?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetAddressRuneDeltasResponse>> {
+            return AddressesApiFp(configuration).getAddressRuneDeltas(address, pageSize, startHeight, endHeight, cursor, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieve UTXOs held by a specific address with optional type filtering
@@ -322,7 +457,7 @@ export const AddressesApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAddressUtxos(address: string, type?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2002>> {
+        async getAddressUtxos(address: string, type?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetAddressUTXOsResponse>> {
             return AddressesApiFp(configuration).getAddressUtxos(address, type, options).then((request) => request(axios, basePath));
         },
         /**
@@ -332,18 +467,8 @@ export const AddressesApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validateAddress(address: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2003>> {
+        async validateAddress(address: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ValidateAddressResponse>> {
             return AddressesApiFp(configuration).validateAddress(address, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Verifies a signed message
-         * @summary Verify message
-         * @param {RequestsVerifyMessageRequest} body Message verification parameters
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async verifyMessage(body: RequestsVerifyMessageRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse200>> {
-            return AddressesApiFp(configuration).verifyMessage(body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -363,8 +488,38 @@ export class AddressesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AddressesApi
      */
-    public async getAddress(address: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2001>> {
+    public async getAddress(address: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetAddressResponse>> {
         return AddressesApiFp(this.configuration).getAddress(address, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Get deltas for a specific address with pagination
+     * @summary Get address deltas
+     * @param {string} address Address
+     * @param {number} [pageSize] Number of results per page (default: 100, max: 1000)
+     * @param {number} [startHeight] Start block height
+     * @param {number} [endHeight] End block height
+     * @param {string} [cursor] Base64 encoded cursor for pagination
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AddressesApi
+     */
+    public async getAddressDeltas(address: string, pageSize?: number, startHeight?: number, endHeight?: number, cursor?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetAddressDeltasResponse>> {
+        return AddressesApiFp(this.configuration).getAddressDeltas(address, pageSize, startHeight, endHeight, cursor, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Get rune deltas for a specific address with pagination
+     * @summary Get address rune deltas
+     * @param {string} address Address
+     * @param {number} [pageSize] Number of results per page (default: 100, max: 1000)
+     * @param {number} [startHeight] Start block height
+     * @param {number} [endHeight] End block height
+     * @param {string} [cursor] Cursor for pagination
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AddressesApi
+     */
+    public async getAddressRuneDeltas(address: string, pageSize?: number, startHeight?: number, endHeight?: number, cursor?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetAddressRuneDeltasResponse>> {
+        return AddressesApiFp(this.configuration).getAddressRuneDeltas(address, pageSize, startHeight, endHeight, cursor, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieve UTXOs held by a specific address with optional type filtering
@@ -375,7 +530,7 @@ export class AddressesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AddressesApi
      */
-    public async getAddressUtxos(address: string, type?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2002>> {
+    public async getAddressUtxos(address: string, type?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetAddressUTXOsResponse>> {
         return AddressesApiFp(this.configuration).getAddressUtxos(address, type, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -386,18 +541,7 @@ export class AddressesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AddressesApi
      */
-    public async validateAddress(address: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2003>> {
+    public async validateAddress(address: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ValidateAddressResponse>> {
         return AddressesApiFp(this.configuration).validateAddress(address, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Verifies a signed message
-     * @summary Verify message
-     * @param {RequestsVerifyMessageRequest} body Message verification parameters
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AddressesApi
-     */
-    public async verifyMessage(body: RequestsVerifyMessageRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse200>> {
-        return AddressesApiFp(this.configuration).verifyMessage(body, options).then((request) => request(this.axios, this.basePath));
     }
 }

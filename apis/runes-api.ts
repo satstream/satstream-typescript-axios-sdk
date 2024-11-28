@@ -17,8 +17,8 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20029 } from '../models';
-import { InlineResponse20030 } from '../models';
+import { GetLatestRunesResponse } from '../models';
+import { GetRuneResponse } from '../models';
 import { UtilsResponseEnvelope } from '../models';
 /**
  * RunesApi - axios parameter creator
@@ -117,19 +117,19 @@ export const RunesApiAxiosParamCreator = function (configuration?: Configuration
             };
         },
         /**
-         * Retrieve information about a specific rune
+         * Retrieve information about a specific rune by name or ID (e.g., \"UNCOMMON•GOODS\" or \"1:0\")
          * @summary Get rune info
-         * @param {string} runeName Rune Name
+         * @param {string} identifier Rune Name or ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRune: async (runeName: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'runeName' is not null or undefined
-            if (runeName === null || runeName === undefined) {
-                throw new RequiredError('runeName','Required parameter runeName was null or undefined when calling getRune.');
+        getRune: async (identifier: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'identifier' is not null or undefined
+            if (identifier === null || identifier === undefined) {
+                throw new RequiredError('identifier','Required parameter identifier was null or undefined when calling getRune.');
             }
-            const localVarPath = `/rune/{rune_name}`
-                .replace(`{${"rune_name"}}`, encodeURIComponent(String(runeName)));
+            const localVarPath = `/rune/{identifier}`
+                .replace(`{${"identifier"}}`, encodeURIComponent(String(identifier)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -179,7 +179,7 @@ export const RunesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLatestRunes(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20030>>> {
+        async getLatestRunes(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetLatestRunesResponse>>> {
             const localVarAxiosArgs = await RunesApiAxiosParamCreator(configuration).getLatestRunes(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -193,7 +193,7 @@ export const RunesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLatestRunesPage(page: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20030>>> {
+        async getLatestRunesPage(page: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetLatestRunesResponse>>> {
             const localVarAxiosArgs = await RunesApiAxiosParamCreator(configuration).getLatestRunesPage(page, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -201,14 +201,14 @@ export const RunesApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * Retrieve information about a specific rune
+         * Retrieve information about a specific rune by name or ID (e.g., \"UNCOMMON•GOODS\" or \"1:0\")
          * @summary Get rune info
-         * @param {string} runeName Rune Name
+         * @param {string} identifier Rune Name or ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRune(runeName: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20029>>> {
-            const localVarAxiosArgs = await RunesApiAxiosParamCreator(configuration).getRune(runeName, options);
+        async getRune(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetRuneResponse>>> {
+            const localVarAxiosArgs = await RunesApiAxiosParamCreator(configuration).getRune(identifier, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -229,7 +229,7 @@ export const RunesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLatestRunes(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20030>> {
+        async getLatestRunes(options?: AxiosRequestConfig): Promise<AxiosResponse<GetLatestRunesResponse>> {
             return RunesApiFp(configuration).getLatestRunes(options).then((request) => request(axios, basePath));
         },
         /**
@@ -239,18 +239,18 @@ export const RunesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLatestRunesPage(page: number, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20030>> {
+        async getLatestRunesPage(page: number, options?: AxiosRequestConfig): Promise<AxiosResponse<GetLatestRunesResponse>> {
             return RunesApiFp(configuration).getLatestRunesPage(page, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieve information about a specific rune
+         * Retrieve information about a specific rune by name or ID (e.g., \"UNCOMMON•GOODS\" or \"1:0\")
          * @summary Get rune info
-         * @param {string} runeName Rune Name
+         * @param {string} identifier Rune Name or ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRune(runeName: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20029>> {
-            return RunesApiFp(configuration).getRune(runeName, options).then((request) => request(axios, basePath));
+        async getRune(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetRuneResponse>> {
+            return RunesApiFp(configuration).getRune(identifier, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -269,7 +269,7 @@ export class RunesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RunesApi
      */
-    public async getLatestRunes(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20030>> {
+    public async getLatestRunes(options?: AxiosRequestConfig) : Promise<AxiosResponse<GetLatestRunesResponse>> {
         return RunesApiFp(this.configuration).getLatestRunes(options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -280,18 +280,18 @@ export class RunesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RunesApi
      */
-    public async getLatestRunesPage(page: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20030>> {
+    public async getLatestRunesPage(page: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetLatestRunesResponse>> {
         return RunesApiFp(this.configuration).getLatestRunesPage(page, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Retrieve information about a specific rune
+     * Retrieve information about a specific rune by name or ID (e.g., \"UNCOMMON•GOODS\" or \"1:0\")
      * @summary Get rune info
-     * @param {string} runeName Rune Name
+     * @param {string} identifier Rune Name or ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RunesApi
      */
-    public async getRune(runeName: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20029>> {
-        return RunesApiFp(this.configuration).getRune(runeName, options).then((request) => request(this.axios, this.basePath));
+    public async getRune(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetRuneResponse>> {
+        return RunesApiFp(this.configuration).getRune(identifier, options).then((request) => request(this.axios, this.basePath));
     }
 }

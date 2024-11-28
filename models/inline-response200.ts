@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { OutputResponse } from './output-response';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -22,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse200 extends UtilsResponseEnvelope {
 
     /**
-     * @type {boolean}
+     * @type {OutputResponse}
      * @memberof InlineResponse200
      */
-    data?: boolean;
+    data?: OutputResponse;
 }

@@ -17,8 +17,8 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse2002 } from '../models';
-import { InlineResponse20026 } from '../models';
+import { InlineResponse200 } from '../models';
+import { InlineResponse2001 } from '../models';
 import { UtilsResponseEnvelope } from '../models';
 /**
  * OutputsApi - axios parameter creator
@@ -141,7 +141,7 @@ export const OutputsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getOutputByOutpoint(outpoint: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20026>>> {
+        async getOutputByOutpoint(outpoint: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse200>>> {
             const localVarAxiosArgs = await OutputsApiAxiosParamCreator(configuration).getOutputByOutpoint(outpoint, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -155,7 +155,7 @@ export const OutputsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getOutputs(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2002>>> {
+        async getOutputs(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2001>>> {
             const localVarAxiosArgs = await OutputsApiAxiosParamCreator(configuration).getOutputs(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -178,7 +178,7 @@ export const OutputsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getOutputByOutpoint(outpoint: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20026>> {
+        async getOutputByOutpoint(outpoint: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse200>> {
             return OutputsApiFp(configuration).getOutputByOutpoint(outpoint, options).then((request) => request(axios, basePath));
         },
         /**
@@ -188,7 +188,7 @@ export const OutputsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getOutputs(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2002>> {
+        async getOutputs(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2001>> {
             return OutputsApiFp(configuration).getOutputs(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -209,7 +209,7 @@ export class OutputsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OutputsApi
      */
-    public async getOutputByOutpoint(outpoint: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20026>> {
+    public async getOutputByOutpoint(outpoint: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse200>> {
         return OutputsApiFp(this.configuration).getOutputByOutpoint(outpoint, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -220,7 +220,7 @@ export class OutputsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OutputsApi
      */
-    public async getOutputs(body: Array<string>, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2002>> {
+    public async getOutputs(body: Array<string>, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2001>> {
         return OutputsApiFp(this.configuration).getOutputs(body, options).then((request) => request(this.axios, this.basePath));
     }
 }

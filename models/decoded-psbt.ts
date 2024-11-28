@@ -15,6 +15,7 @@
 import { DecodedPSBTInput } from './decoded-psbtinput';
 import { DecodedPSBTOutput } from './decoded-psbtoutput';
 import { RawTx1 } from './raw-tx1';
+import { UnknownFields } from './unknown-fields';
  /**
  * 
  *
@@ -58,8 +59,8 @@ export interface DecodedPSBT {
     /**
      * The unknown global fields
      *
-     * @type {{ [key: string]: any; }}
+     * @type {UnknownFields}
      * @memberof DecodedPSBT
      */
-    unknown?: { [key: string]: any; };
+    unknown?: UnknownFields;
 }

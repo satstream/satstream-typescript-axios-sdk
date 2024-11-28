@@ -17,8 +17,8 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20032 } from '../models';
-import { RequestsDecodeScriptRequest } from '../models';
+import { DecodeScriptRequest } from '../models';
+import { DecodeScriptResponse } from '../models';
 import { UtilsResponseEnvelope } from '../models';
 /**
  * ScriptsApi - axios parameter creator
@@ -29,11 +29,11 @@ export const ScriptsApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Decode a hex-encoded script and return detailed information about it.
          * @summary Decode Script
-         * @param {RequestsDecodeScriptRequest} body Script to decode
+         * @param {DecodeScriptRequest} body Script to decode
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        decodeScript: async (body: RequestsDecodeScriptRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        decodeScript: async (body: DecodeScriptRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling decodeScript.');
@@ -89,11 +89,11 @@ export const ScriptsApiFp = function(configuration?: Configuration) {
         /**
          * Decode a hex-encoded script and return detailed information about it.
          * @summary Decode Script
-         * @param {RequestsDecodeScriptRequest} body Script to decode
+         * @param {DecodeScriptRequest} body Script to decode
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async decodeScript(body: RequestsDecodeScriptRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20032>>> {
+        async decodeScript(body: DecodeScriptRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<DecodeScriptResponse>>> {
             const localVarAxiosArgs = await ScriptsApiAxiosParamCreator(configuration).decodeScript(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -112,11 +112,11 @@ export const ScriptsApiFactory = function (configuration?: Configuration, basePa
         /**
          * Decode a hex-encoded script and return detailed information about it.
          * @summary Decode Script
-         * @param {RequestsDecodeScriptRequest} body Script to decode
+         * @param {DecodeScriptRequest} body Script to decode
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async decodeScript(body: RequestsDecodeScriptRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20032>> {
+        async decodeScript(body: DecodeScriptRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<DecodeScriptResponse>> {
             return ScriptsApiFp(configuration).decodeScript(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -132,12 +132,12 @@ export class ScriptsApi extends BaseAPI {
     /**
      * Decode a hex-encoded script and return detailed information about it.
      * @summary Decode Script
-     * @param {RequestsDecodeScriptRequest} body Script to decode
+     * @param {DecodeScriptRequest} body Script to decode
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ScriptsApi
      */
-    public async decodeScript(body: RequestsDecodeScriptRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20032>> {
+    public async decodeScript(body: DecodeScriptRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<DecodeScriptResponse>> {
         return ScriptsApiFp(this.configuration).decodeScript(body, options).then((request) => request(this.axios, this.basePath));
     }
 }

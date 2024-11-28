@@ -17,9 +17,9 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20013 } from '../models';
-import { InlineResponse20025 } from '../models';
-import { RequestsGetNetworkHashPSRequest } from '../models';
+import { GetMiningInfoResponse } from '../models';
+import { GetNetworkHashPSRequest } from '../models';
+import { GetNetworkHashPSResponse } from '../models';
 import { UtilsResponseEnvelope } from '../models';
 /**
  * MiningApi - axios parameter creator
@@ -72,11 +72,11 @@ export const MiningApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * Returns the estimated network hashes per second based on the last n blocks
          * @summary Get network hash per second
-         * @param {RequestsGetNetworkHashPSRequest} body Network hash rate parameters
+         * @param {GetNetworkHashPSRequest} body Network hash rate parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNetworkHashps: async (body: RequestsGetNetworkHashPSRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getNetworkHashps: async (body: GetNetworkHashPSRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling getNetworkHashps.');
@@ -135,7 +135,7 @@ export const MiningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMiningInfo(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20025>>> {
+        async getMiningInfo(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetMiningInfoResponse>>> {
             const localVarAxiosArgs = await MiningApiAxiosParamCreator(configuration).getMiningInfo(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -145,11 +145,11 @@ export const MiningApiFp = function(configuration?: Configuration) {
         /**
          * Returns the estimated network hashes per second based on the last n blocks
          * @summary Get network hash per second
-         * @param {RequestsGetNetworkHashPSRequest} body Network hash rate parameters
+         * @param {GetNetworkHashPSRequest} body Network hash rate parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getNetworkHashps(body: RequestsGetNetworkHashPSRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20013>>> {
+        async getNetworkHashps(body: GetNetworkHashPSRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetNetworkHashPSResponse>>> {
             const localVarAxiosArgs = await MiningApiAxiosParamCreator(configuration).getNetworkHashps(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -171,17 +171,17 @@ export const MiningApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMiningInfo(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20025>> {
+        async getMiningInfo(options?: AxiosRequestConfig): Promise<AxiosResponse<GetMiningInfoResponse>> {
             return MiningApiFp(configuration).getMiningInfo(options).then((request) => request(axios, basePath));
         },
         /**
          * Returns the estimated network hashes per second based on the last n blocks
          * @summary Get network hash per second
-         * @param {RequestsGetNetworkHashPSRequest} body Network hash rate parameters
+         * @param {GetNetworkHashPSRequest} body Network hash rate parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getNetworkHashps(body: RequestsGetNetworkHashPSRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20013>> {
+        async getNetworkHashps(body: GetNetworkHashPSRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<GetNetworkHashPSResponse>> {
             return MiningApiFp(configuration).getNetworkHashps(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -201,18 +201,18 @@ export class MiningApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MiningApi
      */
-    public async getMiningInfo(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20025>> {
+    public async getMiningInfo(options?: AxiosRequestConfig) : Promise<AxiosResponse<GetMiningInfoResponse>> {
         return MiningApiFp(this.configuration).getMiningInfo(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Returns the estimated network hashes per second based on the last n blocks
      * @summary Get network hash per second
-     * @param {RequestsGetNetworkHashPSRequest} body Network hash rate parameters
+     * @param {GetNetworkHashPSRequest} body Network hash rate parameters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MiningApi
      */
-    public async getNetworkHashps(body: RequestsGetNetworkHashPSRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20013>> {
+    public async getNetworkHashps(body: GetNetworkHashPSRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetNetworkHashPSResponse>> {
         return MiningApiFp(this.configuration).getNetworkHashps(body, options).then((request) => request(this.axios, this.basePath));
     }
 }

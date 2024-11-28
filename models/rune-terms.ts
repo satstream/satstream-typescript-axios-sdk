@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { BigInt } from './big-int';
  /**
  * 
  *
@@ -27,10 +28,10 @@ export interface RuneTerms {
     amount?: number;
 
     /**
-     * @type {string}
+     * @type {BigInt}
      * @memberof RuneTerms
      */
-    cap?: string;
+    cap?: BigInt;
 
     /**
      * @type {Array<number>}

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { AddressResponse } from './address-response';
+import { OutputResponse } from './output-response';
 import { UtilsResponseEnvelope } from './utils-response-envelope';
  /**
  * 
@@ -23,8 +23,8 @@ import { UtilsResponseEnvelope } from './utils-response-envelope';
 export interface InlineResponse2001 extends UtilsResponseEnvelope {
 
     /**
-     * @type {AddressResponse}
+     * @type {Array<OutputResponse>}
      * @memberof InlineResponse2001
      */
-    data?: AddressResponse;
+    data?: Array<OutputResponse>;
 }

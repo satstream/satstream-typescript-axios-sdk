@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { RuneEntry } from './rune-entry';
  /**
  * 
  *
@@ -20,12 +19,6 @@ import { RuneEntry } from './rune-entry';
  * @interface RuneResponse
  */
 export interface RuneResponse {
-
-    /**
-     * @type {RuneEntry}
-     * @memberof RuneResponse
-     */
-    entry?: RuneEntry;
 
     /**
      * @type {string}

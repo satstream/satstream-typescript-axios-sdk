@@ -17,25 +17,29 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20034 } from '../models';
-import { InlineResponse20035 } from '../models';
-import { InlineResponse20036 } from '../models';
-import { InlineResponse20037 } from '../models';
-import { InlineResponse20038 } from '../models';
-import { InlineResponse20039 } from '../models';
-import { InlineResponse20040 } from '../models';
-import { InlineResponse20041 } from '../models';
-import { InlineResponse2005 } from '../models';
-import { RequestsCombineRawTransactionRequest } from '../models';
-import { RequestsConvertToPSBTRequest } from '../models';
-import { RequestsCreateRawTxRequest } from '../models';
-import { RequestsGetTxOutProofRequest } from '../models';
-import { RequestsGetTxOutRequest } from '../models';
-import { RequestsGetTxOutSetInfoRequest } from '../models';
-import { RequestsGetTxSpendingPrevoutRequest } from '../models';
-import { RequestsSendRawTransactionRequest } from '../models';
-import { RequestsVerifyTxOutProofRequest } from '../models';
+import { CombineRawTransactionResponse } from '../models';
+import { ConvertToPSBTResponse } from '../models';
+import { CreateRawTransactionResponse } from '../models';
+import { DecodeTransactionResponse } from '../models';
+import { GetRawTransactionDecodeResponse } from '../models';
+import { GetRawTransactionHexResponse } from '../models';
+import { GetRawTransactionPrevoutResponse } from '../models';
+import { GetTxOutProofResponse } from '../models';
+import { GetTxOutResponse } from '../models';
+import { GetTxSpendingPrevoutResponse } from '../models';
+import { InlineResponse2002 } from '../models';
+import { SendRawTransactionResponse } from '../models';
+import { TransactionCombineRawTransactionRequest } from '../models';
+import { TransactionConvertToPSBTRequest } from '../models';
+import { TransactionCreateRawTxRequest } from '../models';
+import { TransactionGetTxOutProofRequest } from '../models';
+import { TransactionGetTxOutRequest } from '../models';
+import { TransactionGetTxOutSetInfoRequest } from '../models';
+import { TransactionGetTxSpendingPrevoutRequest } from '../models';
+import { TransactionSendRawTransactionRequest } from '../models';
+import { TransactionVerifyTxOutProofRequest } from '../models';
 import { UtilsResponseEnvelope } from '../models';
+import { VerifyTxOutProofResponse } from '../models';
 /**
  * TransactionsApi - axios parameter creator
  * @export
@@ -45,11 +49,11 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         /**
          * Combines multiple partially signed transactions into one transaction
          * @summary Combine Raw Transactions
-         * @param {RequestsCombineRawTransactionRequest} body Array of hex-encoded raw transactions
+         * @param {TransactionCombineRawTransactionRequest} body Array of hex-encoded raw transactions
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        combineRawTransaction: async (body: RequestsCombineRawTransactionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        combineRawTransaction: async (body: TransactionCombineRawTransactionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling combineRawTransaction.');
@@ -96,11 +100,11 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         /**
          * Converts a network serialized transaction to a PSBT. This should be used only with createrawtransaction and fundrawtransaction. createpsbt and walletcreatefundedpsbt should be used for new applications.
          * @summary Convert Raw Transaction to PSBT
-         * @param {RequestsConvertToPSBTRequest} body Raw transaction conversion parameters
+         * @param {TransactionConvertToPSBTRequest} body Raw transaction conversion parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        convertToPsbt: async (body: RequestsConvertToPSBTRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        convertToPsbt: async (body: TransactionConvertToPSBTRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling convertToPsbt.');
@@ -147,11 +151,11 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         /**
          * Creates a raw transaction spending the given inputs and creating new outputs. Note that the transaction's inputs are not signed, and it is not stored in the wallet or transmitted to the network.
          * @summary Create Raw Transaction
-         * @param {RequestsCreateRawTxRequest} body Transaction parameters
+         * @param {TransactionCreateRawTxRequest} body Transaction parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createRawTransaction: async (body: RequestsCreateRawTxRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createRawTransaction: async (body: TransactionCreateRawTxRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createRawTransaction.');
@@ -197,17 +201,17 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * Decodes a transaction and returns its inscriptions and runestone data
-         * @summary Decode a transaction
+         * @summary Decode transaction inscriptions
          * @param {string} txid Transaction ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        decodeTx: async (txid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        decodeTxInscriptions: async (txid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'txid' is not null or undefined
             if (txid === null || txid === undefined) {
-                throw new RequiredError('txid','Required parameter txid was null or undefined when calling decodeTx.');
+                throw new RequiredError('txid','Required parameter txid was null or undefined when calling decodeTxInscriptions.');
             }
-            const localVarPath = `/tx/{txid}/decode`
+            const localVarPath = `/tx/{txid}/inscriptions`
                 .replace(`{${"txid"}}`, encodeURIComponent(String(txid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -244,18 +248,18 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
-         * Get raw transaction as a decoded object
+         * Get raw transaction with basic decoded information
          * @summary Get raw transaction (verbosity 1)
          * @param {string} txid Transaction ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRawTransactionDecoded: async (txid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getRawTransaction: async (txid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'txid' is not null or undefined
             if (txid === null || txid === undefined) {
-                throw new RequiredError('txid','Required parameter txid was null or undefined when calling getRawTransactionDecoded.');
+                throw new RequiredError('txid','Required parameter txid was null or undefined when calling getRawTransaction.');
             }
-            const localVarPath = `/tx/{txid}/decoded`
+            const localVarPath = `/tx/{txid}/raw/decode`
                 .replace(`{${"txid"}}`, encodeURIComponent(String(txid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -341,7 +345,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * Get raw transaction with prevout information
-         * @summary Get raw transaction (verbosity 2)
+         * @summary Get raw transaction with prevouts (verbosity 2)
          * @param {string} txid Transaction ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -351,55 +355,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
             if (txid === null || txid === undefined) {
                 throw new RequiredError('txid','Required parameter txid was null or undefined when calling getRawTransactionPrevout.');
             }
-            const localVarPath = `/tx/{txid}/prevout`
-                .replace(`{${"txid"}}`, encodeURIComponent(String(txid)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication ApiKeyAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? await configuration.apiKey("X-API-KEY")
-                    : await configuration.apiKey;
-                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
-            }
-
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieve information about a specific transaction
-         * @summary Get transaction info
-         * @param {string} txid Transaction ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getTransaction: async (txid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'txid' is not null or undefined
-            if (txid === null || txid === undefined) {
-                throw new RequiredError('txid','Required parameter txid was null or undefined when calling getTransaction.');
-            }
-            const localVarPath = `/tx/{txid}`
+            const localVarPath = `/tx/{txid}/raw/prevout`
                 .replace(`{${"txid"}}`, encodeURIComponent(String(txid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -438,11 +394,11 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         /**
          * Returns details about an unspent transaction output
          * @summary Get transaction output
-         * @param {RequestsGetTxOutRequest} body Transaction output request parameters
+         * @param {TransactionGetTxOutRequest} body Transaction output request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTxOut: async (body: RequestsGetTxOutRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getTxOut: async (body: TransactionGetTxOutRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling getTxOut.');
@@ -489,11 +445,11 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         /**
          * Returns a hex-encoded proof that one or more specified transactions were included in a block
          * @summary Get transaction output proof
-         * @param {RequestsGetTxOutProofRequest} body Transaction proof request parameters
+         * @param {TransactionGetTxOutProofRequest} body Transaction proof request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTxOutProof: async (body: RequestsGetTxOutProofRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getTxOutProof: async (body: TransactionGetTxOutProofRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling getTxOutProof.');
@@ -540,11 +496,11 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         /**
          * Returns statistics about the unspent transaction output set
          * @summary Get transaction output set information
-         * @param {RequestsGetTxOutSetInfoRequest} body UTXO set info request parameters
+         * @param {TransactionGetTxOutSetInfoRequest} body UTXO set info request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTxOutSetInfo: async (body: RequestsGetTxOutSetInfoRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getTxOutSetInfo: async (body: TransactionGetTxOutSetInfoRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling getTxOutSetInfo.');
@@ -591,11 +547,11 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         /**
          * Scans the mempool to find transactions spending any of the given outputs
          * @summary Get transaction spending prevout
-         * @param {RequestsGetTxSpendingPrevoutRequest} body Transaction spending prevout request
+         * @param {TransactionGetTxSpendingPrevoutRequest} body Transaction spending prevout request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTxSpendingPrevout: async (body: RequestsGetTxSpendingPrevoutRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getTxSpendingPrevout: async (body: TransactionGetTxSpendingPrevoutRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling getTxSpendingPrevout.');
@@ -642,11 +598,11 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         /**
          * Submits a raw transaction to local node and network
          * @summary Send raw transaction
-         * @param {RequestsSendRawTransactionRequest} body Raw transaction to send
+         * @param {TransactionSendRawTransactionRequest} body Raw transaction to send
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sendRawTransaction: async (body: RequestsSendRawTransactionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        sendRawTransaction: async (body: TransactionSendRawTransactionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling sendRawTransaction.');
@@ -693,11 +649,11 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         /**
          * Verifies that a proof points to a transaction in a block
          * @summary Verify transaction output proof
-         * @param {RequestsVerifyTxOutProofRequest} body Proof to verify
+         * @param {TransactionVerifyTxOutProofRequest} body Proof to verify
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        verifyTxOutProof: async (body: RequestsVerifyTxOutProofRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        verifyTxOutProof: async (body: TransactionVerifyTxOutProofRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling verifyTxOutProof.');
@@ -753,11 +709,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         /**
          * Combines multiple partially signed transactions into one transaction
          * @summary Combine Raw Transactions
-         * @param {RequestsCombineRawTransactionRequest} body Array of hex-encoded raw transactions
+         * @param {TransactionCombineRawTransactionRequest} body Array of hex-encoded raw transactions
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async combineRawTransaction(body: RequestsCombineRawTransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+        async combineRawTransaction(body: TransactionCombineRawTransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<CombineRawTransactionResponse>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).combineRawTransaction(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -767,11 +723,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         /**
          * Converts a network serialized transaction to a PSBT. This should be used only with createrawtransaction and fundrawtransaction. createpsbt and walletcreatefundedpsbt should be used for new applications.
          * @summary Convert Raw Transaction to PSBT
-         * @param {RequestsConvertToPSBTRequest} body Raw transaction conversion parameters
+         * @param {TransactionConvertToPSBTRequest} body Raw transaction conversion parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async convertToPsbt(body: RequestsConvertToPSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+        async convertToPsbt(body: TransactionConvertToPSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ConvertToPSBTResponse>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).convertToPsbt(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -781,11 +737,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         /**
          * Creates a raw transaction spending the given inputs and creating new outputs. Note that the transaction's inputs are not signed, and it is not stored in the wallet or transmitted to the network.
          * @summary Create Raw Transaction
-         * @param {RequestsCreateRawTxRequest} body Transaction parameters
+         * @param {TransactionCreateRawTxRequest} body Transaction parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createRawTransaction(body: RequestsCreateRawTxRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+        async createRawTransaction(body: TransactionCreateRawTxRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<CreateRawTransactionResponse>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).createRawTransaction(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -794,27 +750,27 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * Decodes a transaction and returns its inscriptions and runestone data
-         * @summary Decode a transaction
+         * @summary Decode transaction inscriptions
          * @param {string} txid Transaction ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async decodeTx(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20039>>> {
-            const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).decodeTx(txid, options);
+        async decodeTxInscriptions(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<DecodeTransactionResponse>>> {
+            const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).decodeTxInscriptions(txid, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
             };
         },
         /**
-         * Get raw transaction as a decoded object
+         * Get raw transaction with basic decoded information
          * @summary Get raw transaction (verbosity 1)
          * @param {string} txid Transaction ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRawTransactionDecoded(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20040>>> {
-            const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getRawTransactionDecoded(txid, options);
+        async getRawTransaction(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetRawTransactionDecodeResponse>>> {
+            const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getRawTransaction(txid, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -827,7 +783,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRawTransactionHex(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+        async getRawTransactionHex(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetRawTransactionHexResponse>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getRawTransactionHex(txid, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -836,27 +792,13 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * Get raw transaction with prevout information
-         * @summary Get raw transaction (verbosity 2)
+         * @summary Get raw transaction with prevouts (verbosity 2)
          * @param {string} txid Transaction ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRawTransactionPrevout(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20041>>> {
+        async getRawTransactionPrevout(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetRawTransactionPrevoutResponse>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getRawTransactionPrevout(txid, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * Retrieve information about a specific transaction
-         * @summary Get transaction info
-         * @param {string} txid Transaction ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getTransaction(txid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20038>>> {
-            const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getTransaction(txid, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -865,11 +807,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         /**
          * Returns details about an unspent transaction output
          * @summary Get transaction output
-         * @param {RequestsGetTxOutRequest} body Transaction output request parameters
+         * @param {TransactionGetTxOutRequest} body Transaction output request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxOut(body: RequestsGetTxOutRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20034>>> {
+        async getTxOut(body: TransactionGetTxOutRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetTxOutResponse>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getTxOut(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -879,11 +821,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         /**
          * Returns a hex-encoded proof that one or more specified transactions were included in a block
          * @summary Get transaction output proof
-         * @param {RequestsGetTxOutProofRequest} body Transaction proof request parameters
+         * @param {TransactionGetTxOutProofRequest} body Transaction proof request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxOutProof(body: RequestsGetTxOutProofRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+        async getTxOutProof(body: TransactionGetTxOutProofRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetTxOutProofResponse>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getTxOutProof(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -893,11 +835,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         /**
          * Returns statistics about the unspent transaction output set
          * @summary Get transaction output set information
-         * @param {RequestsGetTxOutSetInfoRequest} body UTXO set info request parameters
+         * @param {TransactionGetTxOutSetInfoRequest} body UTXO set info request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxOutSetInfo(body: RequestsGetTxOutSetInfoRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20035>>> {
+        async getTxOutSetInfo(body: TransactionGetTxOutSetInfoRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2002>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getTxOutSetInfo(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -907,11 +849,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         /**
          * Scans the mempool to find transactions spending any of the given outputs
          * @summary Get transaction spending prevout
-         * @param {RequestsGetTxSpendingPrevoutRequest} body Transaction spending prevout request
+         * @param {TransactionGetTxSpendingPrevoutRequest} body Transaction spending prevout request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxSpendingPrevout(body: RequestsGetTxSpendingPrevoutRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20037>>> {
+        async getTxSpendingPrevout(body: TransactionGetTxSpendingPrevoutRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetTxSpendingPrevoutResponse>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getTxSpendingPrevout(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -921,11 +863,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         /**
          * Submits a raw transaction to local node and network
          * @summary Send raw transaction
-         * @param {RequestsSendRawTransactionRequest} body Raw transaction to send
+         * @param {TransactionSendRawTransactionRequest} body Raw transaction to send
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async sendRawTransaction(body: RequestsSendRawTransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+        async sendRawTransaction(body: TransactionSendRawTransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SendRawTransactionResponse>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).sendRawTransaction(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -935,11 +877,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         /**
          * Verifies that a proof points to a transaction in a block
          * @summary Verify transaction output proof
-         * @param {RequestsVerifyTxOutProofRequest} body Proof to verify
+         * @param {TransactionVerifyTxOutProofRequest} body Proof to verify
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async verifyTxOutProof(body: RequestsVerifyTxOutProofRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20036>>> {
+        async verifyTxOutProof(body: TransactionVerifyTxOutProofRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<VerifyTxOutProofResponse>>> {
             const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).verifyTxOutProof(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -958,52 +900,52 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
         /**
          * Combines multiple partially signed transactions into one transaction
          * @summary Combine Raw Transactions
-         * @param {RequestsCombineRawTransactionRequest} body Array of hex-encoded raw transactions
+         * @param {TransactionCombineRawTransactionRequest} body Array of hex-encoded raw transactions
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async combineRawTransaction(body: RequestsCombineRawTransactionRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+        async combineRawTransaction(body: TransactionCombineRawTransactionRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<CombineRawTransactionResponse>> {
             return TransactionsApiFp(configuration).combineRawTransaction(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Converts a network serialized transaction to a PSBT. This should be used only with createrawtransaction and fundrawtransaction. createpsbt and walletcreatefundedpsbt should be used for new applications.
          * @summary Convert Raw Transaction to PSBT
-         * @param {RequestsConvertToPSBTRequest} body Raw transaction conversion parameters
+         * @param {TransactionConvertToPSBTRequest} body Raw transaction conversion parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async convertToPsbt(body: RequestsConvertToPSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+        async convertToPsbt(body: TransactionConvertToPSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<ConvertToPSBTResponse>> {
             return TransactionsApiFp(configuration).convertToPsbt(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Creates a raw transaction spending the given inputs and creating new outputs. Note that the transaction's inputs are not signed, and it is not stored in the wallet or transmitted to the network.
          * @summary Create Raw Transaction
-         * @param {RequestsCreateRawTxRequest} body Transaction parameters
+         * @param {TransactionCreateRawTxRequest} body Transaction parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createRawTransaction(body: RequestsCreateRawTxRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+        async createRawTransaction(body: TransactionCreateRawTxRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<CreateRawTransactionResponse>> {
             return TransactionsApiFp(configuration).createRawTransaction(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Decodes a transaction and returns its inscriptions and runestone data
-         * @summary Decode a transaction
+         * @summary Decode transaction inscriptions
          * @param {string} txid Transaction ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async decodeTx(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20039>> {
-            return TransactionsApiFp(configuration).decodeTx(txid, options).then((request) => request(axios, basePath));
+        async decodeTxInscriptions(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<DecodeTransactionResponse>> {
+            return TransactionsApiFp(configuration).decodeTxInscriptions(txid, options).then((request) => request(axios, basePath));
         },
         /**
-         * Get raw transaction as a decoded object
+         * Get raw transaction with basic decoded information
          * @summary Get raw transaction (verbosity 1)
          * @param {string} txid Transaction ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRawTransactionDecoded(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20040>> {
-            return TransactionsApiFp(configuration).getRawTransactionDecoded(txid, options).then((request) => request(axios, basePath));
+        async getRawTransaction(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetRawTransactionDecodeResponse>> {
+            return TransactionsApiFp(configuration).getRawTransaction(txid, options).then((request) => request(axios, basePath));
         },
         /**
          * Get raw transaction as a raw hex string
@@ -1012,87 +954,77 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRawTransactionHex(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+        async getRawTransactionHex(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetRawTransactionHexResponse>> {
             return TransactionsApiFp(configuration).getRawTransactionHex(txid, options).then((request) => request(axios, basePath));
         },
         /**
          * Get raw transaction with prevout information
-         * @summary Get raw transaction (verbosity 2)
+         * @summary Get raw transaction with prevouts (verbosity 2)
          * @param {string} txid Transaction ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRawTransactionPrevout(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20041>> {
+        async getRawTransactionPrevout(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetRawTransactionPrevoutResponse>> {
             return TransactionsApiFp(configuration).getRawTransactionPrevout(txid, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve information about a specific transaction
-         * @summary Get transaction info
-         * @param {string} txid Transaction ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getTransaction(txid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20038>> {
-            return TransactionsApiFp(configuration).getTransaction(txid, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns details about an unspent transaction output
          * @summary Get transaction output
-         * @param {RequestsGetTxOutRequest} body Transaction output request parameters
+         * @param {TransactionGetTxOutRequest} body Transaction output request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxOut(body: RequestsGetTxOutRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20034>> {
+        async getTxOut(body: TransactionGetTxOutRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<GetTxOutResponse>> {
             return TransactionsApiFp(configuration).getTxOut(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns a hex-encoded proof that one or more specified transactions were included in a block
          * @summary Get transaction output proof
-         * @param {RequestsGetTxOutProofRequest} body Transaction proof request parameters
+         * @param {TransactionGetTxOutProofRequest} body Transaction proof request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxOutProof(body: RequestsGetTxOutProofRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+        async getTxOutProof(body: TransactionGetTxOutProofRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<GetTxOutProofResponse>> {
             return TransactionsApiFp(configuration).getTxOutProof(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns statistics about the unspent transaction output set
          * @summary Get transaction output set information
-         * @param {RequestsGetTxOutSetInfoRequest} body UTXO set info request parameters
+         * @param {TransactionGetTxOutSetInfoRequest} body UTXO set info request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxOutSetInfo(body: RequestsGetTxOutSetInfoRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20035>> {
+        async getTxOutSetInfo(body: TransactionGetTxOutSetInfoRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2002>> {
             return TransactionsApiFp(configuration).getTxOutSetInfo(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Scans the mempool to find transactions spending any of the given outputs
          * @summary Get transaction spending prevout
-         * @param {RequestsGetTxSpendingPrevoutRequest} body Transaction spending prevout request
+         * @param {TransactionGetTxSpendingPrevoutRequest} body Transaction spending prevout request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTxSpendingPrevout(body: RequestsGetTxSpendingPrevoutRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20037>> {
+        async getTxSpendingPrevout(body: TransactionGetTxSpendingPrevoutRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<GetTxSpendingPrevoutResponse>> {
             return TransactionsApiFp(configuration).getTxSpendingPrevout(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Submits a raw transaction to local node and network
          * @summary Send raw transaction
-         * @param {RequestsSendRawTransactionRequest} body Raw transaction to send
+         * @param {TransactionSendRawTransactionRequest} body Raw transaction to send
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async sendRawTransaction(body: RequestsSendRawTransactionRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+        async sendRawTransaction(body: TransactionSendRawTransactionRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<SendRawTransactionResponse>> {
             return TransactionsApiFp(configuration).sendRawTransaction(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Verifies that a proof points to a transaction in a block
          * @summary Verify transaction output proof
-         * @param {RequestsVerifyTxOutProofRequest} body Proof to verify
+         * @param {TransactionVerifyTxOutProofRequest} body Proof to verify
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async verifyTxOutProof(body: RequestsVerifyTxOutProofRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20036>> {
+        async verifyTxOutProof(body: TransactionVerifyTxOutProofRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<VerifyTxOutProofResponse>> {
             return TransactionsApiFp(configuration).verifyTxOutProof(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -1108,57 +1040,57 @@ export class TransactionsApi extends BaseAPI {
     /**
      * Combines multiple partially signed transactions into one transaction
      * @summary Combine Raw Transactions
-     * @param {RequestsCombineRawTransactionRequest} body Array of hex-encoded raw transactions
+     * @param {TransactionCombineRawTransactionRequest} body Array of hex-encoded raw transactions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async combineRawTransaction(body: RequestsCombineRawTransactionRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+    public async combineRawTransaction(body: TransactionCombineRawTransactionRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<CombineRawTransactionResponse>> {
         return TransactionsApiFp(this.configuration).combineRawTransaction(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Converts a network serialized transaction to a PSBT. This should be used only with createrawtransaction and fundrawtransaction. createpsbt and walletcreatefundedpsbt should be used for new applications.
      * @summary Convert Raw Transaction to PSBT
-     * @param {RequestsConvertToPSBTRequest} body Raw transaction conversion parameters
+     * @param {TransactionConvertToPSBTRequest} body Raw transaction conversion parameters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async convertToPsbt(body: RequestsConvertToPSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+    public async convertToPsbt(body: TransactionConvertToPSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<ConvertToPSBTResponse>> {
         return TransactionsApiFp(this.configuration).convertToPsbt(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Creates a raw transaction spending the given inputs and creating new outputs. Note that the transaction's inputs are not signed, and it is not stored in the wallet or transmitted to the network.
      * @summary Create Raw Transaction
-     * @param {RequestsCreateRawTxRequest} body Transaction parameters
+     * @param {TransactionCreateRawTxRequest} body Transaction parameters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async createRawTransaction(body: RequestsCreateRawTxRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+    public async createRawTransaction(body: TransactionCreateRawTxRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<CreateRawTransactionResponse>> {
         return TransactionsApiFp(this.configuration).createRawTransaction(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Decodes a transaction and returns its inscriptions and runestone data
-     * @summary Decode a transaction
+     * @summary Decode transaction inscriptions
      * @param {string} txid Transaction ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async decodeTx(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20039>> {
-        return TransactionsApiFp(this.configuration).decodeTx(txid, options).then((request) => request(this.axios, this.basePath));
+    public async decodeTxInscriptions(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<DecodeTransactionResponse>> {
+        return TransactionsApiFp(this.configuration).decodeTxInscriptions(txid, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Get raw transaction as a decoded object
+     * Get raw transaction with basic decoded information
      * @summary Get raw transaction (verbosity 1)
      * @param {string} txid Transaction ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getRawTransactionDecoded(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20040>> {
-        return TransactionsApiFp(this.configuration).getRawTransactionDecoded(txid, options).then((request) => request(this.axios, this.basePath));
+    public async getRawTransaction(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetRawTransactionDecodeResponse>> {
+        return TransactionsApiFp(this.configuration).getRawTransaction(txid, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Get raw transaction as a raw hex string
@@ -1168,95 +1100,84 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getRawTransactionHex(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+    public async getRawTransactionHex(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetRawTransactionHexResponse>> {
         return TransactionsApiFp(this.configuration).getRawTransactionHex(txid, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Get raw transaction with prevout information
-     * @summary Get raw transaction (verbosity 2)
+     * @summary Get raw transaction with prevouts (verbosity 2)
      * @param {string} txid Transaction ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getRawTransactionPrevout(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20041>> {
+    public async getRawTransactionPrevout(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetRawTransactionPrevoutResponse>> {
         return TransactionsApiFp(this.configuration).getRawTransactionPrevout(txid, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieve information about a specific transaction
-     * @summary Get transaction info
-     * @param {string} txid Transaction ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TransactionsApi
-     */
-    public async getTransaction(txid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20038>> {
-        return TransactionsApiFp(this.configuration).getTransaction(txid, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Returns details about an unspent transaction output
      * @summary Get transaction output
-     * @param {RequestsGetTxOutRequest} body Transaction output request parameters
+     * @param {TransactionGetTxOutRequest} body Transaction output request parameters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getTxOut(body: RequestsGetTxOutRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20034>> {
+    public async getTxOut(body: TransactionGetTxOutRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetTxOutResponse>> {
         return TransactionsApiFp(this.configuration).getTxOut(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Returns a hex-encoded proof that one or more specified transactions were included in a block
      * @summary Get transaction output proof
-     * @param {RequestsGetTxOutProofRequest} body Transaction proof request parameters
+     * @param {TransactionGetTxOutProofRequest} body Transaction proof request parameters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getTxOutProof(body: RequestsGetTxOutProofRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+    public async getTxOutProof(body: TransactionGetTxOutProofRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetTxOutProofResponse>> {
         return TransactionsApiFp(this.configuration).getTxOutProof(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Returns statistics about the unspent transaction output set
      * @summary Get transaction output set information
-     * @param {RequestsGetTxOutSetInfoRequest} body UTXO set info request parameters
+     * @param {TransactionGetTxOutSetInfoRequest} body UTXO set info request parameters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getTxOutSetInfo(body: RequestsGetTxOutSetInfoRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20035>> {
+    public async getTxOutSetInfo(body: TransactionGetTxOutSetInfoRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2002>> {
         return TransactionsApiFp(this.configuration).getTxOutSetInfo(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Scans the mempool to find transactions spending any of the given outputs
      * @summary Get transaction spending prevout
-     * @param {RequestsGetTxSpendingPrevoutRequest} body Transaction spending prevout request
+     * @param {TransactionGetTxSpendingPrevoutRequest} body Transaction spending prevout request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async getTxSpendingPrevout(body: RequestsGetTxSpendingPrevoutRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20037>> {
+    public async getTxSpendingPrevout(body: TransactionGetTxSpendingPrevoutRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetTxSpendingPrevoutResponse>> {
         return TransactionsApiFp(this.configuration).getTxSpendingPrevout(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Submits a raw transaction to local node and network
      * @summary Send raw transaction
-     * @param {RequestsSendRawTransactionRequest} body Raw transaction to send
+     * @param {TransactionSendRawTransactionRequest} body Raw transaction to send
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async sendRawTransaction(body: RequestsSendRawTransactionRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+    public async sendRawTransaction(body: TransactionSendRawTransactionRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<SendRawTransactionResponse>> {
         return TransactionsApiFp(this.configuration).sendRawTransaction(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Verifies that a proof points to a transaction in a block
      * @summary Verify transaction output proof
-     * @param {RequestsVerifyTxOutProofRequest} body Proof to verify
+     * @param {TransactionVerifyTxOutProofRequest} body Proof to verify
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public async verifyTxOutProof(body: RequestsVerifyTxOutProofRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20036>> {
+    public async verifyTxOutProof(body: TransactionVerifyTxOutProofRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<VerifyTxOutProofResponse>> {
         return TransactionsApiFp(this.configuration).verifyTxOutProof(body, options).then((request) => request(this.axios, this.basePath));
     }
 }

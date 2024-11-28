@@ -105,10 +105,10 @@ export interface InscriptionResponse {
     rune?: string;
 
     /**
-     * @type {string}
+     * @type {number}
      * @memberof InscriptionResponse
      */
-    sat?: string;
+    sat?: number;
 
     /**
      * @type {string}

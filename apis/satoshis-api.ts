@@ -17,7 +17,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20031 } from '../models';
+import { GetSatoshiResponse } from '../models';
 import { UtilsResponseEnvelope } from '../models';
 /**
  * SatoshisApi - axios parameter creator
@@ -89,7 +89,7 @@ export const SatoshisApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSatoshi(number: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20031>>> {
+        async getSatoshi(number: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetSatoshiResponse>>> {
             const localVarAxiosArgs = await SatoshisApiAxiosParamCreator(configuration).getSatoshi(number, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -112,7 +112,7 @@ export const SatoshisApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSatoshi(number: number, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20031>> {
+        async getSatoshi(number: number, options?: AxiosRequestConfig): Promise<AxiosResponse<GetSatoshiResponse>> {
             return SatoshisApiFp(configuration).getSatoshi(number, options).then((request) => request(axios, basePath));
         },
     };
@@ -133,7 +133,7 @@ export class SatoshisApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SatoshisApi
      */
-    public async getSatoshi(number: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20031>> {
+    public async getSatoshi(number: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetSatoshiResponse>> {
         return SatoshisApiFp(this.configuration).getSatoshi(number, options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -17,10 +17,10 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20015 } from '../models';
-import { InlineResponse20016 } from '../models';
-import { RequestsEstimateRawFeeRequest } from '../models';
-import { RequestsEstimateSmartFeeRequest } from '../models';
+import { EstimateRawFeeRequest } from '../models';
+import { EstimateRawFeeResponse } from '../models';
+import { EstimateSmartFeeRequest } from '../models';
+import { EstimateSmartFeeResponse } from '../models';
 import { UtilsResponseEnvelope } from '../models';
 /**
  * FeesApi - axios parameter creator
@@ -31,11 +31,11 @@ export const FeesApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * Estimates the approximate fee per kilobyte needed for a transaction to begin confirmation within conf_target blocks if possible.
          * @summary Estimate Raw Fee
-         * @param {RequestsEstimateRawFeeRequest} body Fee estimation parameters
+         * @param {EstimateRawFeeRequest} body Fee estimation parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        estimateRawFee: async (body: RequestsEstimateRawFeeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        estimateRawFee: async (body: EstimateRawFeeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling estimateRawFee.');
@@ -82,11 +82,11 @@ export const FeesApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * Estimates the approximate fee per kilobyte needed for a transaction to begin confirmation within conf_target blocks
          * @summary Estimate smart fee
-         * @param {RequestsEstimateSmartFeeRequest} body Fee estimation parameters
+         * @param {EstimateSmartFeeRequest} body Fee estimation parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        estimateSmartFee: async (body: RequestsEstimateSmartFeeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        estimateSmartFee: async (body: EstimateSmartFeeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling estimateSmartFee.');
@@ -142,11 +142,11 @@ export const FeesApiFp = function(configuration?: Configuration) {
         /**
          * Estimates the approximate fee per kilobyte needed for a transaction to begin confirmation within conf_target blocks if possible.
          * @summary Estimate Raw Fee
-         * @param {RequestsEstimateRawFeeRequest} body Fee estimation parameters
+         * @param {EstimateRawFeeRequest} body Fee estimation parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async estimateRawFee(body: RequestsEstimateRawFeeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20015>>> {
+        async estimateRawFee(body: EstimateRawFeeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<EstimateRawFeeResponse>>> {
             const localVarAxiosArgs = await FeesApiAxiosParamCreator(configuration).estimateRawFee(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -156,11 +156,11 @@ export const FeesApiFp = function(configuration?: Configuration) {
         /**
          * Estimates the approximate fee per kilobyte needed for a transaction to begin confirmation within conf_target blocks
          * @summary Estimate smart fee
-         * @param {RequestsEstimateSmartFeeRequest} body Fee estimation parameters
+         * @param {EstimateSmartFeeRequest} body Fee estimation parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async estimateSmartFee(body: RequestsEstimateSmartFeeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20016>>> {
+        async estimateSmartFee(body: EstimateSmartFeeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<EstimateSmartFeeResponse>>> {
             const localVarAxiosArgs = await FeesApiAxiosParamCreator(configuration).estimateSmartFee(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -179,21 +179,21 @@ export const FeesApiFactory = function (configuration?: Configuration, basePath?
         /**
          * Estimates the approximate fee per kilobyte needed for a transaction to begin confirmation within conf_target blocks if possible.
          * @summary Estimate Raw Fee
-         * @param {RequestsEstimateRawFeeRequest} body Fee estimation parameters
+         * @param {EstimateRawFeeRequest} body Fee estimation parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async estimateRawFee(body: RequestsEstimateRawFeeRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20015>> {
+        async estimateRawFee(body: EstimateRawFeeRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<EstimateRawFeeResponse>> {
             return FeesApiFp(configuration).estimateRawFee(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Estimates the approximate fee per kilobyte needed for a transaction to begin confirmation within conf_target blocks
          * @summary Estimate smart fee
-         * @param {RequestsEstimateSmartFeeRequest} body Fee estimation parameters
+         * @param {EstimateSmartFeeRequest} body Fee estimation parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async estimateSmartFee(body: RequestsEstimateSmartFeeRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20016>> {
+        async estimateSmartFee(body: EstimateSmartFeeRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<EstimateSmartFeeResponse>> {
             return FeesApiFp(configuration).estimateSmartFee(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -209,23 +209,23 @@ export class FeesApi extends BaseAPI {
     /**
      * Estimates the approximate fee per kilobyte needed for a transaction to begin confirmation within conf_target blocks if possible.
      * @summary Estimate Raw Fee
-     * @param {RequestsEstimateRawFeeRequest} body Fee estimation parameters
+     * @param {EstimateRawFeeRequest} body Fee estimation parameters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FeesApi
      */
-    public async estimateRawFee(body: RequestsEstimateRawFeeRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20015>> {
+    public async estimateRawFee(body: EstimateRawFeeRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<EstimateRawFeeResponse>> {
         return FeesApiFp(this.configuration).estimateRawFee(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Estimates the approximate fee per kilobyte needed for a transaction to begin confirmation within conf_target blocks
      * @summary Estimate smart fee
-     * @param {RequestsEstimateSmartFeeRequest} body Fee estimation parameters
+     * @param {EstimateSmartFeeRequest} body Fee estimation parameters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FeesApi
      */
-    public async estimateSmartFee(body: RequestsEstimateSmartFeeRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20016>> {
+    public async estimateSmartFee(body: EstimateSmartFeeRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<EstimateSmartFeeResponse>> {
         return FeesApiFp(this.configuration).estimateSmartFee(body, options).then((request) => request(this.axios, this.basePath));
     }
 }

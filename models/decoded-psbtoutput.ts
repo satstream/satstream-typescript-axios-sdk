@@ -14,6 +14,7 @@
 
 import { PSBTBip32Deriv } from './psbtbip32-deriv';
 import { Script } from './script';
+import { UnknownFields } from './unknown-fields';
  /**
  * 
  *
@@ -41,10 +42,10 @@ export interface DecodedPSBTOutput {
     /**
      * Unknown fields
      *
-     * @type {{ [key: string]: any; }}
+     * @type {UnknownFields}
      * @memberof DecodedPSBTOutput
      */
-    unknown?: { [key: string]: any; };
+    unknown?: UnknownFields;
 
     /**
      * The witness script

@@ -17,16 +17,20 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20010 } from '../models';
-import { InlineResponse20011 } from '../models';
-import { InlineResponse20012 } from '../models';
-import { InlineResponse2004 } from '../models';
-import { InlineResponse2005 } from '../models';
-import { InlineResponse2006 } from '../models';
-import { InlineResponse2007 } from '../models';
-import { InlineResponse2008 } from '../models';
-import { InlineResponse2009 } from '../models';
-import { RequestsGetBlockStatsRequest } from '../models';
+import { GetBlockCountResponse } from '../models';
+import { GetBlockDecodedResponse } from '../models';
+import { GetBlockHashByHeightResponse } from '../models';
+import { GetBlockHexResponse } from '../models';
+import { GetBlockPrevoutResponse } from '../models';
+import { GetBlockResponse } from '../models';
+import { GetBlockStatsRequest } from '../models';
+import { GetBlockStatsResponse } from '../models';
+import { GetBlockSummaryResponse } from '../models';
+import { GetBlockchainInfoResponse } from '../models';
+import { GetBlocksResponse } from '../models';
+import { GetLatestBlockHashResponse } from '../models';
+import { GetLatestBlockHeightResponse } from '../models';
+import { GetLatestBlockTimeResponse } from '../models';
 import { UtilsResponseEnvelope } from '../models';
 /**
  * BlocksApi - axios parameter creator
@@ -319,11 +323,11 @@ export const BlocksApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * Computes per block statistics for a given window
          * @summary Get block stats
-         * @param {RequestsGetBlockStatsRequest} body Block stats request parameters
+         * @param {GetBlockStatsRequest} body Block stats request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBlockStats: async (body: RequestsGetBlockStatsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getBlockStats: async (body: GetBlockStatsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling getBlockStats.');
@@ -640,7 +644,7 @@ export const BlocksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockCount(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20011>>> {
+        async getBlockCount(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetBlockCountResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockCount(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -654,7 +658,7 @@ export const BlocksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockDecoded(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2004>>> {
+        async getBlockDecoded(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetBlockDecodedResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockDecoded(identifier, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -668,7 +672,7 @@ export const BlocksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockHashByHeight(blockHeight: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+        async getBlockHashByHeight(blockHeight: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetBlockHashByHeightResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockHashByHeight(blockHeight, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -682,7 +686,7 @@ export const BlocksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockHex(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+        async getBlockHex(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetBlockHexResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockHex(identifier, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -696,7 +700,7 @@ export const BlocksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockInfo(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2009>>> {
+        async getBlockInfo(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetBlockResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockInfo(identifier, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -710,7 +714,7 @@ export const BlocksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockPrevout(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2006>>> {
+        async getBlockPrevout(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetBlockPrevoutResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockPrevout(identifier, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -720,11 +724,11 @@ export const BlocksApiFp = function(configuration?: Configuration) {
         /**
          * Computes per block statistics for a given window
          * @summary Get block stats
-         * @param {RequestsGetBlockStatsRequest} body Block stats request parameters
+         * @param {GetBlockStatsRequest} body Block stats request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockStats(body: RequestsGetBlockStatsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2008>>> {
+        async getBlockStats(body: GetBlockStatsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetBlockStatsResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockStats(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -738,7 +742,7 @@ export const BlocksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockSummary(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2007>>> {
+        async getBlockSummary(identifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetBlockSummaryResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockSummary(identifier, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -751,7 +755,7 @@ export const BlocksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockchainInfo(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20010>>> {
+        async getBlockchainInfo(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetBlockchainInfoResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlockchainInfo(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -764,7 +768,7 @@ export const BlocksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlocks(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20012>>> {
+        async getBlocks(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetBlocksResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getBlocks(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -777,7 +781,7 @@ export const BlocksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLatestBlockHeight(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20011>>> {
+        async getLatestBlockHeight(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetLatestBlockHeightResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getLatestBlockHeight(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -790,7 +794,7 @@ export const BlocksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLatestBlockhash(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+        async getLatestBlockhash(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetLatestBlockHashResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getLatestBlockhash(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -803,7 +807,7 @@ export const BlocksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLatestBlocktime(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20011>>> {
+        async getLatestBlocktime(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetLatestBlockTimeResponse>>> {
             const localVarAxiosArgs = await BlocksApiAxiosParamCreator(configuration).getLatestBlocktime(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -825,7 +829,7 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockCount(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20011>> {
+        async getBlockCount(options?: AxiosRequestConfig): Promise<AxiosResponse<GetBlockCountResponse>> {
             return BlocksApiFp(configuration).getBlockCount(options).then((request) => request(axios, basePath));
         },
         /**
@@ -835,7 +839,7 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockDecoded(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2004>> {
+        async getBlockDecoded(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetBlockDecodedResponse>> {
             return BlocksApiFp(configuration).getBlockDecoded(identifier, options).then((request) => request(axios, basePath));
         },
         /**
@@ -845,7 +849,7 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockHashByHeight(blockHeight: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+        async getBlockHashByHeight(blockHeight: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetBlockHashByHeightResponse>> {
             return BlocksApiFp(configuration).getBlockHashByHeight(blockHeight, options).then((request) => request(axios, basePath));
         },
         /**
@@ -855,7 +859,7 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockHex(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+        async getBlockHex(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetBlockHexResponse>> {
             return BlocksApiFp(configuration).getBlockHex(identifier, options).then((request) => request(axios, basePath));
         },
         /**
@@ -865,7 +869,7 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockInfo(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2009>> {
+        async getBlockInfo(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetBlockResponse>> {
             return BlocksApiFp(configuration).getBlockInfo(identifier, options).then((request) => request(axios, basePath));
         },
         /**
@@ -875,17 +879,17 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockPrevout(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2006>> {
+        async getBlockPrevout(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetBlockPrevoutResponse>> {
             return BlocksApiFp(configuration).getBlockPrevout(identifier, options).then((request) => request(axios, basePath));
         },
         /**
          * Computes per block statistics for a given window
          * @summary Get block stats
-         * @param {RequestsGetBlockStatsRequest} body Block stats request parameters
+         * @param {GetBlockStatsRequest} body Block stats request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockStats(body: RequestsGetBlockStatsRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2008>> {
+        async getBlockStats(body: GetBlockStatsRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<GetBlockStatsResponse>> {
             return BlocksApiFp(configuration).getBlockStats(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -895,7 +899,7 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockSummary(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2007>> {
+        async getBlockSummary(identifier: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetBlockSummaryResponse>> {
             return BlocksApiFp(configuration).getBlockSummary(identifier, options).then((request) => request(axios, basePath));
         },
         /**
@@ -904,7 +908,7 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlockchainInfo(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20010>> {
+        async getBlockchainInfo(options?: AxiosRequestConfig): Promise<AxiosResponse<GetBlockchainInfoResponse>> {
             return BlocksApiFp(configuration).getBlockchainInfo(options).then((request) => request(axios, basePath));
         },
         /**
@@ -913,7 +917,7 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBlocks(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20012>> {
+        async getBlocks(options?: AxiosRequestConfig): Promise<AxiosResponse<GetBlocksResponse>> {
             return BlocksApiFp(configuration).getBlocks(options).then((request) => request(axios, basePath));
         },
         /**
@@ -922,7 +926,7 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLatestBlockHeight(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20011>> {
+        async getLatestBlockHeight(options?: AxiosRequestConfig): Promise<AxiosResponse<GetLatestBlockHeightResponse>> {
             return BlocksApiFp(configuration).getLatestBlockHeight(options).then((request) => request(axios, basePath));
         },
         /**
@@ -931,7 +935,7 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLatestBlockhash(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+        async getLatestBlockhash(options?: AxiosRequestConfig): Promise<AxiosResponse<GetLatestBlockHashResponse>> {
             return BlocksApiFp(configuration).getLatestBlockhash(options).then((request) => request(axios, basePath));
         },
         /**
@@ -940,7 +944,7 @@ export const BlocksApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLatestBlocktime(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20011>> {
+        async getLatestBlocktime(options?: AxiosRequestConfig): Promise<AxiosResponse<GetLatestBlockTimeResponse>> {
             return BlocksApiFp(configuration).getLatestBlocktime(options).then((request) => request(axios, basePath));
         },
     };
@@ -960,7 +964,7 @@ export class BlocksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getBlockCount(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20011>> {
+    public async getBlockCount(options?: AxiosRequestConfig) : Promise<AxiosResponse<GetBlockCountResponse>> {
         return BlocksApiFp(this.configuration).getBlockCount(options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -971,7 +975,7 @@ export class BlocksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getBlockDecoded(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2004>> {
+    public async getBlockDecoded(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetBlockDecodedResponse>> {
         return BlocksApiFp(this.configuration).getBlockDecoded(identifier, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -982,7 +986,7 @@ export class BlocksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getBlockHashByHeight(blockHeight: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+    public async getBlockHashByHeight(blockHeight: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetBlockHashByHeightResponse>> {
         return BlocksApiFp(this.configuration).getBlockHashByHeight(blockHeight, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -993,7 +997,7 @@ export class BlocksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getBlockHex(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+    public async getBlockHex(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetBlockHexResponse>> {
         return BlocksApiFp(this.configuration).getBlockHex(identifier, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1004,7 +1008,7 @@ export class BlocksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getBlockInfo(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2009>> {
+    public async getBlockInfo(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetBlockResponse>> {
         return BlocksApiFp(this.configuration).getBlockInfo(identifier, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1015,18 +1019,18 @@ export class BlocksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getBlockPrevout(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2006>> {
+    public async getBlockPrevout(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetBlockPrevoutResponse>> {
         return BlocksApiFp(this.configuration).getBlockPrevout(identifier, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Computes per block statistics for a given window
      * @summary Get block stats
-     * @param {RequestsGetBlockStatsRequest} body Block stats request parameters
+     * @param {GetBlockStatsRequest} body Block stats request parameters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getBlockStats(body: RequestsGetBlockStatsRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2008>> {
+    public async getBlockStats(body: GetBlockStatsRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetBlockStatsResponse>> {
         return BlocksApiFp(this.configuration).getBlockStats(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1037,7 +1041,7 @@ export class BlocksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getBlockSummary(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2007>> {
+    public async getBlockSummary(identifier: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetBlockSummaryResponse>> {
         return BlocksApiFp(this.configuration).getBlockSummary(identifier, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1047,7 +1051,7 @@ export class BlocksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getBlockchainInfo(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20010>> {
+    public async getBlockchainInfo(options?: AxiosRequestConfig) : Promise<AxiosResponse<GetBlockchainInfoResponse>> {
         return BlocksApiFp(this.configuration).getBlockchainInfo(options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1057,7 +1061,7 @@ export class BlocksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getBlocks(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20012>> {
+    public async getBlocks(options?: AxiosRequestConfig) : Promise<AxiosResponse<GetBlocksResponse>> {
         return BlocksApiFp(this.configuration).getBlocks(options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1067,7 +1071,7 @@ export class BlocksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getLatestBlockHeight(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20011>> {
+    public async getLatestBlockHeight(options?: AxiosRequestConfig) : Promise<AxiosResponse<GetLatestBlockHeightResponse>> {
         return BlocksApiFp(this.configuration).getLatestBlockHeight(options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1077,7 +1081,7 @@ export class BlocksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getLatestBlockhash(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+    public async getLatestBlockhash(options?: AxiosRequestConfig) : Promise<AxiosResponse<GetLatestBlockHashResponse>> {
         return BlocksApiFp(this.configuration).getLatestBlockhash(options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1087,7 +1091,7 @@ export class BlocksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BlocksApi
      */
-    public async getLatestBlocktime(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20011>> {
+    public async getLatestBlocktime(options?: AxiosRequestConfig) : Promise<AxiosResponse<GetLatestBlockTimeResponse>> {
         return BlocksApiFp(this.configuration).getLatestBlocktime(options).then((request) => request(this.axios, this.basePath));
     }
 }

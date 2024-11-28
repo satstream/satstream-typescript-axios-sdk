@@ -17,9 +17,9 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20013 } from '../models';
-import { InlineResponse20014 } from '../models';
-import { RequestsGetChainTxStatsRequest } from '../models';
+import { GetChainTxStatsRequest } from '../models';
+import { GetChainTxStatsResponse } from '../models';
+import { GetDifficultyResponse } from '../models';
 import { UtilsResponseEnvelope } from '../models';
 /**
  * NetworkApi - axios parameter creator
@@ -30,11 +30,11 @@ export const NetworkApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Computes statistics about the total number and rate of transactions in the chain
          * @summary Get chain tx stats
-         * @param {RequestsGetChainTxStatsRequest} body Chain tx stats request parameters
+         * @param {GetChainTxStatsRequest} body Chain tx stats request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChainTxStats: async (body: RequestsGetChainTxStatsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getChainTxStats: async (body: GetChainTxStatsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling getChainTxStats.');
@@ -132,11 +132,11 @@ export const NetworkApiFp = function(configuration?: Configuration) {
         /**
          * Computes statistics about the total number and rate of transactions in the chain
          * @summary Get chain tx stats
-         * @param {RequestsGetChainTxStatsRequest} body Chain tx stats request parameters
+         * @param {GetChainTxStatsRequest} body Chain tx stats request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getChainTxStats(body: RequestsGetChainTxStatsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20014>>> {
+        async getChainTxStats(body: GetChainTxStatsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetChainTxStatsResponse>>> {
             const localVarAxiosArgs = await NetworkApiAxiosParamCreator(configuration).getChainTxStats(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -149,7 +149,7 @@ export const NetworkApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDifficulty(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20013>>> {
+        async getDifficulty(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetDifficultyResponse>>> {
             const localVarAxiosArgs = await NetworkApiAxiosParamCreator(configuration).getDifficulty(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -168,11 +168,11 @@ export const NetworkApiFactory = function (configuration?: Configuration, basePa
         /**
          * Computes statistics about the total number and rate of transactions in the chain
          * @summary Get chain tx stats
-         * @param {RequestsGetChainTxStatsRequest} body Chain tx stats request parameters
+         * @param {GetChainTxStatsRequest} body Chain tx stats request parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getChainTxStats(body: RequestsGetChainTxStatsRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20014>> {
+        async getChainTxStats(body: GetChainTxStatsRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<GetChainTxStatsResponse>> {
             return NetworkApiFp(configuration).getChainTxStats(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -181,7 +181,7 @@ export const NetworkApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDifficulty(options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20013>> {
+        async getDifficulty(options?: AxiosRequestConfig): Promise<AxiosResponse<GetDifficultyResponse>> {
             return NetworkApiFp(configuration).getDifficulty(options).then((request) => request(axios, basePath));
         },
     };
@@ -197,12 +197,12 @@ export class NetworkApi extends BaseAPI {
     /**
      * Computes statistics about the total number and rate of transactions in the chain
      * @summary Get chain tx stats
-     * @param {RequestsGetChainTxStatsRequest} body Chain tx stats request parameters
+     * @param {GetChainTxStatsRequest} body Chain tx stats request parameters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NetworkApi
      */
-    public async getChainTxStats(body: RequestsGetChainTxStatsRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20014>> {
+    public async getChainTxStats(body: GetChainTxStatsRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetChainTxStatsResponse>> {
         return NetworkApiFp(this.configuration).getChainTxStats(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -212,7 +212,7 @@ export class NetworkApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof NetworkApi
      */
-    public async getDifficulty(options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20013>> {
+    public async getDifficulty(options?: AxiosRequestConfig) : Promise<AxiosResponse<GetDifficultyResponse>> {
         return NetworkApiFp(this.configuration).getDifficulty(options).then((request) => request(this.axios, this.basePath));
     }
 }

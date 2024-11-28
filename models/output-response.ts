@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { GithubComSatstreamSsUtilsOrdServerResponsesRuneDetails } from './github-com-satstream-ss-utils-ord-server-responses-rune-details';
  /**
  * 
  *
@@ -45,10 +46,10 @@ export interface OutputResponse {
     outpoint?: string;
 
     /**
-     * @type {{ [key: string]: string; }}
+     * @type {{ [key: string]: GithubComSatstreamSsUtilsOrdServerResponsesRuneDetails; }}
      * @memberof OutputResponse
      */
-    runes?: { [key: string]: string; };
+    runes?: { [key: string]: GithubComSatstreamSsUtilsOrdServerResponsesRuneDetails; };
 
     /**
      * @type {Array<Array<number>>}

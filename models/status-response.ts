@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { Duration } from './duration';
  /**
  * 
  *
@@ -20,12 +19,6 @@ import { Duration } from './duration';
  * @interface StatusResponse
  */
 export interface StatusResponse {
-
-    /**
-     * @type {boolean}
-     * @memberof StatusResponse
-     */
-    addressIndex?: boolean;
 
     /**
      * @type {number}
@@ -52,12 +45,6 @@ export interface StatusResponse {
     height?: number;
 
     /**
-     * @type {Duration}
-     * @memberof StatusResponse
-     */
-    initialSyncTime?: Duration;
-
-    /**
      * @type {number}
      * @memberof StatusResponse
      */
@@ -76,44 +63,8 @@ export interface StatusResponse {
     minimumRuneForNextBlock?: string;
 
     /**
-     * @type {boolean}
-     * @memberof StatusResponse
-     */
-    runeIndex?: boolean;
-
-    /**
      * @type {number}
      * @memberof StatusResponse
      */
     runes?: number;
-
-    /**
-     * @type {boolean}
-     * @memberof StatusResponse
-     */
-    satIndex?: boolean;
-
-    /**
-     * @type {string}
-     * @memberof StatusResponse
-     */
-    started?: string;
-
-    /**
-     * @type {boolean}
-     * @memberof StatusResponse
-     */
-    transactionIndex?: boolean;
-
-    /**
-     * @type {boolean}
-     * @memberof StatusResponse
-     */
-    unrecoverablyReorged?: boolean;
-
-    /**
-     * @type {Duration}
-     * @memberof StatusResponse
-     */
-    uptime?: Duration;
 }

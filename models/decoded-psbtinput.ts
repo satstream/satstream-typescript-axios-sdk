@@ -16,6 +16,7 @@ import { Bip32Deriv } from './bip32-deriv';
 import { PSBTWitnessUtxo } from './psbtwitness-utxo';
 import { RawTx1 } from './raw-tx1';
 import { Script } from './script';
+import { UnknownFields } from './unknown-fields';
  /**
  * 
  *
@@ -83,10 +84,10 @@ export interface DecodedPSBTInput {
     /**
      * Unknown fields
      *
-     * @type {{ [key: string]: any; }}
+     * @type {UnknownFields}
      * @memberof DecodedPSBTInput
      */
-    unknown?: { [key: string]: any; };
+    unknown?: UnknownFields;
 
     /**
      * The witness script

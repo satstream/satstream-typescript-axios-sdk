@@ -19,4 +19,28 @@
  * @interface RunestoneData
  */
 export interface RunestoneData {
+
+    /**
+     * @type {Array<Array<number>>}
+     * @memberof RunestoneData
+     */
+    edicts?: Array<Array<number>>;
+
+    /**
+     * @type {string}
+     * @memberof RunestoneData
+     */
+    etching?: string;
+
+    /**
+     * @type {string}
+     * @memberof RunestoneData
+     */
+    mint?: string;
+
+    /**
+     * @type {number}
+     * @memberof RunestoneData
+     */
+    pointer?: number;
 }

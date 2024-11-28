@@ -17,13 +17,16 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { InlineResponse20027 } from '../models';
-import { InlineResponse20028 } from '../models';
-import { InlineResponse2005 } from '../models';
-import { RequestsAnalyzePSBTRequest } from '../models';
-import { RequestsCombinePSBTRequest } from '../models';
-import { RequestsCreatePSBTRequest } from '../models';
-import { RequestsJoinPSBTsRequest } from '../models';
+import { AnalyzePSBTRequest } from '../models';
+import { AnalyzePSBTResponse } from '../models';
+import { CombinePSBTRequest } from '../models';
+import { CombinePSBTResponse } from '../models';
+import { CreatePSBTRequest } from '../models';
+import { CreatePSBTResponse } from '../models';
+import { DecodePSBTRequest } from '../models';
+import { DecodePSBTResponse } from '../models';
+import { JoinPSBTsRequest } from '../models';
+import { JoinPSBTsResponse } from '../models';
 import { UtilsResponseEnvelope } from '../models';
 /**
  * PSBTsApi - axios parameter creator
@@ -34,11 +37,11 @@ export const PSBTsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * Analyzes and provides information about the current status of a PSBT and its inputs
          * @summary Analyze PSBT
-         * @param {RequestsAnalyzePSBTRequest} body PSBT to analyze
+         * @param {AnalyzePSBTRequest} body PSBT to analyze
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        analyzePsbt: async (body: RequestsAnalyzePSBTRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        analyzePsbt: async (body: AnalyzePSBTRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling analyzePsbt.');
@@ -85,11 +88,11 @@ export const PSBTsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * Combines multiple partially signed Bitcoin transactions into one transaction
          * @summary Combine PSBTs
-         * @param {RequestsCombinePSBTRequest} body Array of PSBTs to combine
+         * @param {CombinePSBTRequest} body Array of PSBTs to combine
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        combinePsbt: async (body: RequestsCombinePSBTRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        combinePsbt: async (body: CombinePSBTRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling combinePsbt.');
@@ -136,11 +139,11 @@ export const PSBTsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * Creates a transaction in the Partially Signed Transaction format. Implements the Creator role.
          * @summary Create PSBT
-         * @param {RequestsCreatePSBTRequest} body Transaction parameters
+         * @param {CreatePSBTRequest} body Transaction parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPsbt: async (body: RequestsCreatePSBTRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createPsbt: async (body: CreatePSBTRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createPsbt.');
@@ -187,11 +190,11 @@ export const PSBTsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * Return a JSON object representing the serialized, base64-encoded partially signed Bitcoin transaction.
          * @summary Decode PSBT
-         * @param {RequestsAnalyzePSBTRequest} body PSBT to decode
+         * @param {DecodePSBTRequest} body PSBT to decode
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        decodePsbt: async (body: RequestsAnalyzePSBTRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        decodePsbt: async (body: DecodePSBTRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling decodePsbt.');
@@ -238,11 +241,11 @@ export const PSBTsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * Joins multiple distinct PSBTs with different inputs and outputs into one PSBT
          * @summary Join PSBTs
-         * @param {RequestsJoinPSBTsRequest} body PSBTs to join
+         * @param {JoinPSBTsRequest} body PSBTs to join
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        joinPsbts: async (body: RequestsJoinPSBTsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        joinPsbts: async (body: JoinPSBTsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling joinPsbts.');
@@ -298,11 +301,11 @@ export const PSBTsApiFp = function(configuration?: Configuration) {
         /**
          * Analyzes and provides information about the current status of a PSBT and its inputs
          * @summary Analyze PSBT
-         * @param {RequestsAnalyzePSBTRequest} body PSBT to analyze
+         * @param {AnalyzePSBTRequest} body PSBT to analyze
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async analyzePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20027>>> {
+        async analyzePsbt(body: AnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<AnalyzePSBTResponse>>> {
             const localVarAxiosArgs = await PSBTsApiAxiosParamCreator(configuration).analyzePsbt(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -312,11 +315,11 @@ export const PSBTsApiFp = function(configuration?: Configuration) {
         /**
          * Combines multiple partially signed Bitcoin transactions into one transaction
          * @summary Combine PSBTs
-         * @param {RequestsCombinePSBTRequest} body Array of PSBTs to combine
+         * @param {CombinePSBTRequest} body Array of PSBTs to combine
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async combinePsbt(body: RequestsCombinePSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+        async combinePsbt(body: CombinePSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<CombinePSBTResponse>>> {
             const localVarAxiosArgs = await PSBTsApiAxiosParamCreator(configuration).combinePsbt(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -326,11 +329,11 @@ export const PSBTsApiFp = function(configuration?: Configuration) {
         /**
          * Creates a transaction in the Partially Signed Transaction format. Implements the Creator role.
          * @summary Create PSBT
-         * @param {RequestsCreatePSBTRequest} body Transaction parameters
+         * @param {CreatePSBTRequest} body Transaction parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createPsbt(body: RequestsCreatePSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+        async createPsbt(body: CreatePSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<CreatePSBTResponse>>> {
             const localVarAxiosArgs = await PSBTsApiAxiosParamCreator(configuration).createPsbt(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -340,11 +343,11 @@ export const PSBTsApiFp = function(configuration?: Configuration) {
         /**
          * Return a JSON object representing the serialized, base64-encoded partially signed Bitcoin transaction.
          * @summary Decode PSBT
-         * @param {RequestsAnalyzePSBTRequest} body PSBT to decode
+         * @param {DecodePSBTRequest} body PSBT to decode
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async decodePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse20028>>> {
+        async decodePsbt(body: DecodePSBTRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<DecodePSBTResponse>>> {
             const localVarAxiosArgs = await PSBTsApiAxiosParamCreator(configuration).decodePsbt(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -354,11 +357,11 @@ export const PSBTsApiFp = function(configuration?: Configuration) {
         /**
          * Joins multiple distinct PSBTs with different inputs and outputs into one PSBT
          * @summary Join PSBTs
-         * @param {RequestsJoinPSBTsRequest} body PSBTs to join
+         * @param {JoinPSBTsRequest} body PSBTs to join
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async joinPsbts(body: RequestsJoinPSBTsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2005>>> {
+        async joinPsbts(body: JoinPSBTsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<JoinPSBTsResponse>>> {
             const localVarAxiosArgs = await PSBTsApiAxiosParamCreator(configuration).joinPsbts(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -377,51 +380,51 @@ export const PSBTsApiFactory = function (configuration?: Configuration, basePath
         /**
          * Analyzes and provides information about the current status of a PSBT and its inputs
          * @summary Analyze PSBT
-         * @param {RequestsAnalyzePSBTRequest} body PSBT to analyze
+         * @param {AnalyzePSBTRequest} body PSBT to analyze
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async analyzePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20027>> {
+        async analyzePsbt(body: AnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<AnalyzePSBTResponse>> {
             return PSBTsApiFp(configuration).analyzePsbt(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Combines multiple partially signed Bitcoin transactions into one transaction
          * @summary Combine PSBTs
-         * @param {RequestsCombinePSBTRequest} body Array of PSBTs to combine
+         * @param {CombinePSBTRequest} body Array of PSBTs to combine
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async combinePsbt(body: RequestsCombinePSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+        async combinePsbt(body: CombinePSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<CombinePSBTResponse>> {
             return PSBTsApiFp(configuration).combinePsbt(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Creates a transaction in the Partially Signed Transaction format. Implements the Creator role.
          * @summary Create PSBT
-         * @param {RequestsCreatePSBTRequest} body Transaction parameters
+         * @param {CreatePSBTRequest} body Transaction parameters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createPsbt(body: RequestsCreatePSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+        async createPsbt(body: CreatePSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<CreatePSBTResponse>> {
             return PSBTsApiFp(configuration).createPsbt(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Return a JSON object representing the serialized, base64-encoded partially signed Bitcoin transaction.
          * @summary Decode PSBT
-         * @param {RequestsAnalyzePSBTRequest} body PSBT to decode
+         * @param {DecodePSBTRequest} body PSBT to decode
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async decodePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse20028>> {
+        async decodePsbt(body: DecodePSBTRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<DecodePSBTResponse>> {
             return PSBTsApiFp(configuration).decodePsbt(body, options).then((request) => request(axios, basePath));
         },
         /**
          * Joins multiple distinct PSBTs with different inputs and outputs into one PSBT
          * @summary Join PSBTs
-         * @param {RequestsJoinPSBTsRequest} body PSBTs to join
+         * @param {JoinPSBTsRequest} body PSBTs to join
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async joinPsbts(body: RequestsJoinPSBTsRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2005>> {
+        async joinPsbts(body: JoinPSBTsRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<JoinPSBTsResponse>> {
             return PSBTsApiFp(configuration).joinPsbts(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -437,56 +440,56 @@ export class PSBTsApi extends BaseAPI {
     /**
      * Analyzes and provides information about the current status of a PSBT and its inputs
      * @summary Analyze PSBT
-     * @param {RequestsAnalyzePSBTRequest} body PSBT to analyze
+     * @param {AnalyzePSBTRequest} body PSBT to analyze
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PSBTsApi
      */
-    public async analyzePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20027>> {
+    public async analyzePsbt(body: AnalyzePSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<AnalyzePSBTResponse>> {
         return PSBTsApiFp(this.configuration).analyzePsbt(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Combines multiple partially signed Bitcoin transactions into one transaction
      * @summary Combine PSBTs
-     * @param {RequestsCombinePSBTRequest} body Array of PSBTs to combine
+     * @param {CombinePSBTRequest} body Array of PSBTs to combine
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PSBTsApi
      */
-    public async combinePsbt(body: RequestsCombinePSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+    public async combinePsbt(body: CombinePSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<CombinePSBTResponse>> {
         return PSBTsApiFp(this.configuration).combinePsbt(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Creates a transaction in the Partially Signed Transaction format. Implements the Creator role.
      * @summary Create PSBT
-     * @param {RequestsCreatePSBTRequest} body Transaction parameters
+     * @param {CreatePSBTRequest} body Transaction parameters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PSBTsApi
      */
-    public async createPsbt(body: RequestsCreatePSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+    public async createPsbt(body: CreatePSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<CreatePSBTResponse>> {
         return PSBTsApiFp(this.configuration).createPsbt(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Return a JSON object representing the serialized, base64-encoded partially signed Bitcoin transaction.
      * @summary Decode PSBT
-     * @param {RequestsAnalyzePSBTRequest} body PSBT to decode
+     * @param {DecodePSBTRequest} body PSBT to decode
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PSBTsApi
      */
-    public async decodePsbt(body: RequestsAnalyzePSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse20028>> {
+    public async decodePsbt(body: DecodePSBTRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<DecodePSBTResponse>> {
         return PSBTsApiFp(this.configuration).decodePsbt(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Joins multiple distinct PSBTs with different inputs and outputs into one PSBT
      * @summary Join PSBTs
-     * @param {RequestsJoinPSBTsRequest} body PSBTs to join
+     * @param {JoinPSBTsRequest} body PSBTs to join
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PSBTsApi
      */
-    public async joinPsbts(body: RequestsJoinPSBTsRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2005>> {
+    public async joinPsbts(body: JoinPSBTsRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<JoinPSBTsResponse>> {
         return PSBTsApiFp(this.configuration).joinPsbts(body, options).then((request) => request(this.axios, this.basePath));
     }
 }
