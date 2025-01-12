@@ -42,6 +42,8 @@ export * from './estimate-smart-fee-response';
 export * from './fee-horizon-estimate';
 export * from './fee-range';
 export * from './fetch-inscriptions-response';
+export * from './get-address-balance-response';
+export * from './get-address-balance-response-data';
 export * from './get-address-deltas-response';
 export * from './get-address-response';
 export * from './get-address-rune-deltas-response';

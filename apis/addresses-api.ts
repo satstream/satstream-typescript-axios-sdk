@@ -17,6 +17,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { GetAddressBalanceResponse } from '../models';
 import { GetAddressDeltasResponse } from '../models';
 import { GetAddressResponse } from '../models';
 import { GetAddressRuneDeltasResponse } from '../models';
@@ -42,6 +43,54 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
                 throw new RequiredError('address','Required parameter address was null or undefined when calling getAddress.');
             }
             const localVarPath = `/address/{address}`
+                .replace(`{${"address"}}`, encodeURIComponent(String(address)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("X-API-KEY")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get the total BTC balance of an address by summing all its deltas
+         * @summary Get address balance
+         * @param {string} address Address
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAddressBalance: async (address: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'address' is not null or undefined
+            if (address === null || address === undefined) {
+                throw new RequiredError('address','Required parameter address was null or undefined when calling getAddressBalance.');
+            }
+            const localVarPath = `/address/{address}/balance`
                 .replace(`{${"address"}}`, encodeURIComponent(String(address)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -338,6 +387,20 @@ export const AddressesApiFp = function(configuration?: Configuration) {
             };
         },
         /**
+         * Get the total BTC balance of an address by summing all its deltas
+         * @summary Get address balance
+         * @param {string} address Address
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAddressBalance(address: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetAddressBalanceResponse>>> {
+            const localVarAxiosArgs = await AddressesApiAxiosParamCreator(configuration).getAddressBalance(address, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
          * Get deltas for a specific address with pagination
          * @summary Get address deltas
          * @param {string} address Address
@@ -422,6 +485,16 @@ export const AddressesApiFactory = function (configuration?: Configuration, base
             return AddressesApiFp(configuration).getAddress(address, options).then((request) => request(axios, basePath));
         },
         /**
+         * Get the total BTC balance of an address by summing all its deltas
+         * @summary Get address balance
+         * @param {string} address Address
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAddressBalance(address: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GetAddressBalanceResponse>> {
+            return AddressesApiFp(configuration).getAddressBalance(address, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Get deltas for a specific address with pagination
          * @summary Get address deltas
          * @param {string} address Address
@@ -490,6 +563,17 @@ export class AddressesApi extends BaseAPI {
      */
     public async getAddress(address: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetAddressResponse>> {
         return AddressesApiFp(this.configuration).getAddress(address, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Get the total BTC balance of an address by summing all its deltas
+     * @summary Get address balance
+     * @param {string} address Address
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AddressesApi
+     */
+    public async getAddressBalance(address: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetAddressBalanceResponse>> {
+        return AddressesApiFp(this.configuration).getAddressBalance(address, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Get deltas for a specific address with pagination
