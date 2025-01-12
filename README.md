@@ -1,4 +1,4 @@
-## @satstream/sdk@1.0.32
+## @satstream/sdk@1.0.34
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @satstream/sdk@1.0.32 --save
+npm install @satstream/sdk@1.0.34 --save
 ```
 
 _unPublished (not recommended):_

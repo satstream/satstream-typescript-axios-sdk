@@ -79,7 +79,7 @@ export const AddressesApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
-         * Get the total BTC balance of an address by summing all its deltas
+         * Get the total BTC balance in satoshis of an address by summing all its deltas
          * @summary Get address balance
          * @param {string} address Address
          * @param {*} [options] Override http request option.
@@ -387,7 +387,7 @@ export const AddressesApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * Get the total BTC balance of an address by summing all its deltas
+         * Get the total BTC balance in satoshis of an address by summing all its deltas
          * @summary Get address balance
          * @param {string} address Address
          * @param {*} [options] Override http request option.
@@ -485,7 +485,7 @@ export const AddressesApiFactory = function (configuration?: Configuration, base
             return AddressesApiFp(configuration).getAddress(address, options).then((request) => request(axios, basePath));
         },
         /**
-         * Get the total BTC balance of an address by summing all its deltas
+         * Get the total BTC balance in satoshis of an address by summing all its deltas
          * @summary Get address balance
          * @param {string} address Address
          * @param {*} [options] Override http request option.
@@ -565,7 +565,7 @@ export class AddressesApi extends BaseAPI {
         return AddressesApiFp(this.configuration).getAddress(address, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Get the total BTC balance of an address by summing all its deltas
+     * Get the total BTC balance in satoshis of an address by summing all its deltas
      * @summary Get address balance
      * @param {string} address Address
      * @param {*} [options] Override http request option.
