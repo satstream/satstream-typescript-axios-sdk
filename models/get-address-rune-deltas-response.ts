@@ -34,6 +34,12 @@ export interface GetAddressRuneDeltasResponse {
     data?: Array<AddressRuneDelta>;
 
     /**
+     * @type {boolean}
+     * @memberof GetAddressRuneDeltasResponse
+     */
+    hasMore?: boolean;
+
+    /**
      * @type {string}
      * @memberof GetAddressRuneDeltasResponse
      */

@@ -21,18 +21,6 @@
 export interface AddressRuneDelta {
 
     /**
-     * @type {string}
-     * @memberof AddressRuneDelta
-     */
-    address?: string;
-
-    /**
-     * @type {string}
-     * @memberof AddressRuneDelta
-     */
-    amount?: string;
-
-    /**
      * @type {number}
      * @memberof AddressRuneDelta
      */
@@ -42,17 +30,23 @@ export interface AddressRuneDelta {
      * @type {string}
      * @memberof AddressRuneDelta
      */
-    runeId?: string;
+    delta?: string;
 
     /**
      * @type {string}
      * @memberof AddressRuneDelta
      */
-    txid?: string;
+    incoming?: string;
 
     /**
-     * @type {number}
+     * @type {string}
      * @memberof AddressRuneDelta
      */
-    vout?: number;
+    outgoing?: string;
+
+    /**
+     * @type {string}
+     * @memberof AddressRuneDelta
+     */
+    runeId?: string;
 }
