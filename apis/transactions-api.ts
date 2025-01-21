@@ -307,7 +307,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
             if (txid === null || txid === undefined) {
                 throw new RequiredError('txid','Required parameter txid was null or undefined when calling getRawTransactionHex.');
             }
-            const localVarPath = `/tx/{txid}/hex`
+            const localVarPath = `/tx/{txid}/raw/hex`
                 .replace(`{${"txid"}}`, encodeURIComponent(String(txid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
