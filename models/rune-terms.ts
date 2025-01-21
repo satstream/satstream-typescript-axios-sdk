@@ -22,10 +22,10 @@ import { BigInt } from './big-int';
 export interface RuneTerms {
 
     /**
-     * @type {number}
+     * @type {BigInt}
      * @memberof RuneTerms
      */
-    amount?: number;
+    amount?: BigInt;
 
     /**
      * @type {BigInt}

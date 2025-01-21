@@ -27,14 +27,12 @@ import { GetRawTransactionPrevoutResponse } from '../models';
 import { GetTxOutProofResponse } from '../models';
 import { GetTxOutResponse } from '../models';
 import { GetTxSpendingPrevoutResponse } from '../models';
-import { InlineResponse2002 } from '../models';
 import { SendRawTransactionResponse } from '../models';
 import { TransactionCombineRawTransactionRequest } from '../models';
 import { TransactionConvertToPSBTRequest } from '../models';
 import { TransactionCreateRawTxRequest } from '../models';
 import { TransactionGetTxOutProofRequest } from '../models';
 import { TransactionGetTxOutRequest } from '../models';
-import { TransactionGetTxOutSetInfoRequest } from '../models';
 import { TransactionGetTxSpendingPrevoutRequest } from '../models';
 import { TransactionSendRawTransactionRequest } from '../models';
 import { TransactionVerifyTxOutProofRequest } from '../models';
@@ -494,57 +492,6 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
-         * Returns statistics about the unspent transaction output set
-         * @summary Get transaction output set information
-         * @param {TransactionGetTxOutSetInfoRequest} body UTXO set info request parameters
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getTxOutSetInfo: async (body: TransactionGetTxOutSetInfoRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling getTxOutSetInfo.');
-            }
-            const localVarPath = `/tx/out/set/info`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication ApiKeyAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? await configuration.apiKey("X-API-KEY")
-                    : await configuration.apiKey;
-                localVarHeaderParameter["X-API-KEY"] = localVarApiKeyValue;
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Scans the mempool to find transactions spending any of the given outputs
          * @summary Get transaction spending prevout
          * @param {TransactionGetTxSpendingPrevoutRequest} body Transaction spending prevout request
@@ -833,20 +780,6 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * Returns statistics about the unspent transaction output set
-         * @summary Get transaction output set information
-         * @param {TransactionGetTxOutSetInfoRequest} body UTXO set info request parameters
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getTxOutSetInfo(body: TransactionGetTxOutSetInfoRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<InlineResponse2002>>> {
-            const localVarAxiosArgs = await TransactionsApiAxiosParamCreator(configuration).getTxOutSetInfo(body, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
          * Scans the mempool to find transactions spending any of the given outputs
          * @summary Get transaction spending prevout
          * @param {TransactionGetTxSpendingPrevoutRequest} body Transaction spending prevout request
@@ -988,16 +921,6 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
             return TransactionsApiFp(configuration).getTxOutProof(body, options).then((request) => request(axios, basePath));
         },
         /**
-         * Returns statistics about the unspent transaction output set
-         * @summary Get transaction output set information
-         * @param {TransactionGetTxOutSetInfoRequest} body UTXO set info request parameters
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getTxOutSetInfo(body: TransactionGetTxOutSetInfoRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<InlineResponse2002>> {
-            return TransactionsApiFp(configuration).getTxOutSetInfo(body, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Scans the mempool to find transactions spending any of the given outputs
          * @summary Get transaction spending prevout
          * @param {TransactionGetTxSpendingPrevoutRequest} body Transaction spending prevout request
@@ -1135,17 +1058,6 @@ export class TransactionsApi extends BaseAPI {
      */
     public async getTxOutProof(body: TransactionGetTxOutProofRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<GetTxOutProofResponse>> {
         return TransactionsApiFp(this.configuration).getTxOutProof(body, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Returns statistics about the unspent transaction output set
-     * @summary Get transaction output set information
-     * @param {TransactionGetTxOutSetInfoRequest} body UTXO set info request parameters
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TransactionsApi
-     */
-    public async getTxOutSetInfo(body: TransactionGetTxOutSetInfoRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<InlineResponse2002>> {
-        return TransactionsApiFp(this.configuration).getTxOutSetInfo(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Scans the mempool to find transactions spending any of the given outputs
