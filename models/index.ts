@@ -21,6 +21,7 @@ export * from './combine-psbtresponse';
 export * from './combine-raw-transaction-response';
 export * from './convert-to-psbtresponse';
 export * from './create-psbtinput';
+export * from './create-psbtoutput';
 export * from './create-psbtrequest';
 export * from './create-psbtresponse';
 export * from './create-raw-transaction-response';

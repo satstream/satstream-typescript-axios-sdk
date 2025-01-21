@@ -34,7 +34,7 @@ export interface CreatePSBTInput {
      * @type {string}
      * @memberof CreatePSBTInput
      */
-    txid?: string;
+    txid: string;
 
     /**
      * The output index number (vout) of the output to spend
@@ -42,5 +42,5 @@ export interface CreatePSBTInput {
      * @type {number}
      * @memberof CreatePSBTInput
      */
-    vout?: number;
+    vout: number;
 }

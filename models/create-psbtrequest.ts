@@ -13,6 +13,7 @@
  */
 
 import { CreatePSBTInput } from './create-psbtinput';
+import { CreatePSBTOutput } from './create-psbtoutput';
  /**
  * 
  *
@@ -40,10 +41,10 @@ export interface CreatePSBTRequest {
     /**
      * The outputs (address:amount pairs or {\"data\":\"hex\"})
      *
-     * @type {Array<{ [key: string]: any; }>}
+     * @type {Array<CreatePSBTOutput>}
      * @memberof CreatePSBTRequest
      */
-    outputs: Array<{ [key: string]: any; }>;
+    outputs: Array<CreatePSBTOutput>;
 
     /**
      * Marks this transaction as BIP125-replaceable
