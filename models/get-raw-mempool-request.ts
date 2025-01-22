@@ -21,18 +21,10 @@
 export interface GetRawMempoolRequest {
 
     /**
-     * Optional: If verbose=false, returns txids with mempool sequence number
+     * Optional: Returns txids with mempool sequence number
      *
      * @type {boolean}
      * @memberof GetRawMempoolRequest
      */
     mempoolSequence?: boolean;
-
-    /**
-     * Optional: True for detailed information, false for just txids
-     *
-     * @type {boolean}
-     * @memberof GetRawMempoolRequest
-     */
-    verbose?: boolean;
 }
